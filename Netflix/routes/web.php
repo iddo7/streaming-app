@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokemonsController;
+use App\Http\Controllers\MoviesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('pokemons', 
 [PokemonsController::class, 'index'])->name('pokemons.index');
+
+Route::get('movies', 
+[MoviesController::class, 'index'])->name('movies.index');
