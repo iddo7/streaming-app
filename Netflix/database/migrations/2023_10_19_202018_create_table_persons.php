@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movies', function (Blueprint $table) {
+        Schema::create('persons', function (Blueprint $table) {
             $table->id();
-            $table->string('title',100);
-            $table->text('summary');
-            $table->string('cover',255);
-            $table->integer('duration_minutes');
-            $table->integer('director_id');
-            $table->integer('producer_id');
-          // Add link video yt
+            $table->string('name',64);
+            $table->string('placeOfBirth',128);
+            $table->string('pictureUrl',255);
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('movies');
+        Schema::dropIfExists('persons');
     }
 };
