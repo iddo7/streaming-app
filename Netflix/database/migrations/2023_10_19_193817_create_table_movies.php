@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('title',100);
             $table->text('summary');
             $table->string('cover',255);
-            $table->int('durationMinutes');
-            $table->int('directorId');
-            $table->int('producerId');
+            $table->integer('duration_minutes');
+            $table->integer('director_id');
+            $table->integer('producer_id');
             $table->timestamps();
         });
     }
