@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title',100);
             $table->text('summary');
-            $table->string('cover',255);
+            $table->string('coverUrl',255);
             $table->int('durationMinutes');
             $table->int('directorId');
             $table->int('producerId');
+            // add link yt
             $table->timestamps();
         });
     }
