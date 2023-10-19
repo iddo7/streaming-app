@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('duration_minutes');
             $table->integer('director_id');
             $table->integer('producer_id');
+          // Add link video yt
             $table->timestamps();
         });
     }
