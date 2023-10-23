@@ -14,7 +14,10 @@ class PersonsController extends Controller
     {
         $persons = Person::all();
         $males = Person::where('gender', 'male')->get();
-        return View('Persons.index', compact('persons', 'males'));
+        $females = Person::where('gender', 'female')->get();
+
+
+        return View('Persons.index', compact('persons', 'males', 'females', 'personsOlder18'));
     }
 
     /**
