@@ -13,7 +13,8 @@ class PersonsController extends Controller
     public function index()
     {
         $persons = Person::all();
-        return View('Persons.index', compact('persons'));
+        $males = Person::where('gender', 'male')->get();
+        return View('Persons.index', compact('persons', 'males'));
     }
 
     /**
