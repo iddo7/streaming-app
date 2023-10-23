@@ -17,7 +17,7 @@ class PersonsController extends Controller
         $females = Person::where('gender', 'female')->get();
 
 
-        return View('Persons.index', compact('persons', 'males', 'females', 'personsOlder18'));
+        return View('Persons.index', compact('persons', 'males', 'females'));
     }
 
     /**
