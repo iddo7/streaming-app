@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Person;
 
 class PersonsController extends Controller
 {
@@ -12,7 +13,7 @@ class PersonsController extends Controller
     public function index()
     {
         $persons = Person::all();
-        return View('Persons.index', compact($persons));
+        return View('Persons.index', compact('persons'));
     }
 
     /**
