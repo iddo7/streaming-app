@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name',64);
             $table->string('placeOfBirth',128);
             $table->string('pictureUrl',255);
+            $table->string('mainRole',128);
             $table->timestamps();
         });
     }
