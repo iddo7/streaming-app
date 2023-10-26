@@ -15,6 +15,7 @@
             @if (count($persons))
                 @foreach($persons as $person)
                     <a href=""><img src="{{$person->pictureUrl}}" alt=""></a>
+                    <p>{{$person->movies[0]->title}}</p>
                 @endforeach
             @else
                 <p>We couldn't find any persons.</p>
