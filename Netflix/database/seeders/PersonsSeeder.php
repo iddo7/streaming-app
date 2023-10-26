@@ -12,69 +12,98 @@ class PersonsSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-{
-    DB::table('persons')->insert([
-        [
-            'id' => 1,
-            'name' => 'John Doe',
-            'placeOfBirth' => 'New York',
-            'pictureUrl' => 'https://example.com/john-doe.jpg',
-        ],
-        [
-            'id' => 2,
-            'name' => 'Jane Smith',
-            'placeOfBirth' => 'Los Angeles',
-            'pictureUrl' => 'https://example.com/jane-smith.jpg',
-        ],
-        [
-            'id' => 3,
-            'name' => 'Alice Johnson',
-            'placeOfBirth' => 'Chicago',
-            'pictureUrl' => 'https://example.com/alice-johnson.jpg',
-        ],
-        [
-            'id' => 4,
-            'name' => 'Bob Brown',
-            'placeOfBirth' => 'Miami',
-            'pictureUrl' => 'https://example.com/bob-brown.jpg',
-        ],
-        [
-            'id' => 5,
-            'name' => 'Eva Davis',
-            'placeOfBirth' => 'San Francisco',
-            'pictureUrl' => 'https://example.com/eva-davis.jpg',
-        ],
-        [
-            'id' => 6,
-            'name' => 'Michael Wilson',
-            'placeOfBirth' => 'Houston',
-            'pictureUrl' => 'https://example.com/michael-wilson.jpg',
-        ],
-        [
-            'id' => 7,
-            'name' => 'Grace Lee',
-            'placeOfBirth' => 'Seattle',
-            'pictureUrl' => 'https://example.com/grace-lee.jpg',
-        ],
-        [
-            'id' => 8,
-            'name' => 'David Taylor',
-            'placeOfBirth' => 'Dallas',
-            'pictureUrl' => 'https://example.com/david-taylor.jpg',
-        ],
-        [
-            'id' => 9,
-            'name' => 'Emily White',
-            'placeOfBirth' => 'Boston',
-            'pictureUrl' => 'https://example.com/emily-white.jpg',
-        ],
-        [
-            'id' => 10,
-            'name' => 'William Johnson',
-            'placeOfBirth' => 'Philadelphia',
-            'pictureUrl' => 'https://example.com/william-johnson.jpg',
-        ],
-    ]);
-}
-
+    {
+        DB::table('persons')->insert([
+            [
+                'id' => 1,
+                'name' => 'John Doe',
+                'gender' => 'male',
+                'birthday' => '1978-03-21',
+                'placeOfBirth' => 'New York',
+                'pictureUrl' => 'http://images2.fanpop.com/images/photos/7900000/JOHN-DOE-john-doe-7969105-1735-2560.jpg',
+                'mainRole' => 'actor',
+            ],
+            [
+                'id' => 2,
+                'name' => 'Jane Smith',
+                'gender' => 'female',
+                'birthday' => '1990-06-15',
+                'placeOfBirth' => 'Los Angeles',
+                'pictureUrl' => 'https://img.networthpost.org/thumbs/2806278_jane-smith/2806278_jane-smith_1.jpeg',
+                'mainRole' => 'producer',
+            ],
+            [
+                'id' => 3,
+                'name' => 'Alice Johnson',
+                'gender' => 'female',
+                'birthday' => '1985-11-30',
+                'placeOfBirth' => 'Chicago',
+                'pictureUrl' => 'https://tse1.mm.bing.net/th?id=OIP.keOwACWeX4EpBnw34d_3_QHaKi&pid=Api',
+                'mainRole' => 'director',
+            ],
+            [
+                'id' => 4,
+                'name' => 'Bob Brown',
+                'gender' => 'male',
+                'birthday' => '1992-08-10',
+                'placeOfBirth' => 'Chicago',
+                'pictureUrl' => 'https://cache.legacy.net/legacy/images/cobrands/grandrapids/photos/WM0203395-1_20231019.jpgx?w=600&h=499',
+                'mainRole' => 'actor',
+            ],
+            [
+                'id' => 5,
+                'name' => 'Eva Davis',
+                'gender' => 'female',
+                'birthday' => '1987-05-04',
+                'placeOfBirth' => 'San Francisco',
+                'pictureUrl' => 'https://i.ytimg.com/vi/R-kWnnZ1lOM/maxresdefault.jpg',
+                'mainRole' => 'actor',
+            ],
+            [
+                'id' => 6,
+                'name' => 'Michael Wilson',
+                'gender' => 'male',
+                'birthday' => '1980-12-18',
+                'placeOfBirth' => 'Houston',
+                'pictureUrl' => 'https://assets.dmagstatic.com/wp-content/uploads/2018/02/Michael-Wilson-headshot.jpg',
+                'mainRole' => 'director',
+            ],
+            [
+                'id' => 7,
+                'name' => 'Grace Lee',
+                'gender' => 'female',
+                'birthday' => '1989-09-22',
+                'placeOfBirth' => 'Seattle',
+                'pictureUrl' => 'https://netstorage-kami.akamaized.net/images/d3e3e703047d7d4d.jpg?imwidth=900',
+                'mainRole' => 'producer',
+            ],
+            [
+                'id' => 8,
+                'name' => 'David Taylor',
+                'gender' => 'male',
+                'birthday' => '1983-04-06',
+                'placeOfBirth' => 'Chicago',
+                'pictureUrl' => 'https://www.win-magazine.com/wp-content/uploads/2014/04/david-taylor-mug-shot.jpg',
+                'mainRole' => 'director',
+            ],
+            [
+                'id' => 9,
+                'name' => 'Emily White',
+                'gender' => 'female',
+                'birthday' => '1995-02-14',
+                'placeOfBirth' => 'Boston',
+                'pictureUrl' => 'https://vanderbilthustler.com/wp-content/uploads/2019/10/emily-white.jpg',
+                'mainRole' => 'director',
+            ],
+            [
+                'id' => 10,
+                'name' => 'William Johnson',
+                'gender' => 'male',
+                'birthday' => '1982-07-29',
+                'placeOfBirth' => 'Philadelphia',
+                'pictureUrl' => 'https://www.albanyinstitute.org/tl_files/collection/paintings/1922.2_wollaston.jpg',
+                'mainRole' => 'actor',
+            ],
+        ]);
+    }
 }

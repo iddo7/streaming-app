@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokemonsController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\PersonsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('pokemons',
 
 Route::get('movies', 
 [MoviesController::class, 'index'])->name('movies.index');
+
+Route::get('persons', 
+[PersonsController::class, 'index'])->name('persons.index');

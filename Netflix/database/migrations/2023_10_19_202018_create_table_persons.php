@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('persons', function (Blueprint $table) {
             $table->id();
             $table->string('name',64);
+            $table->string('gender',16);
+            $table->date('birthday');
             $table->string('placeOfBirth',128);
             $table->string('pictureUrl',255);
+            $table->string('mainRole',128);
             $table->timestamps();
         });
     }
