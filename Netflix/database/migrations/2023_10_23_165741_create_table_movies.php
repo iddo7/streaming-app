@@ -17,10 +17,8 @@ return new class extends Migration
             $table->text('summary');
             $table->string('cover',255);
             $table->integer('duration_minutes');
-            $table->unsignedBigInteger('director');
-            $table->foreign('director')->references('id')->on('persons');
-            $table->unsignedBigInteger('producer');
-            $table->foreign('producer')->references('id')->on('persons');
+            $table->foreignId('director_id')->constrained('persons');
+            $table->foreignId('producer_id')->constrained('persons');
             $table->date('annee');
             $table->integer('rating');
             $table->string('lien_video');
