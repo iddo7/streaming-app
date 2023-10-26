@@ -15,9 +15,13 @@ class PersonsController extends Controller
         $persons = Person::all();
         $males = Person::where('gender', 'male')->get();
         $females = Person::where('gender', 'female')->get();
+        $peopleBornInChicago = Person::where('placeOfBirth', 'Chicago')->get();
+        $peopleBornBefore1990 = Person::whereYear('birthday', '<', 1990)->get();
+        $mainlyActors = Person::where('mainRole', 'actor')->get();
+        $mainlyProducers = Person::where('mainRole', 'producer')->get();
 
 
-        return View('Persons.index', compact('persons', 'males', 'females'));
+        return View('Persons.index', compact('persons', 'males', 'females', 'peopleBornInChicago', 'peopleBornBefore1990', 'mainlyActors', 'mainlyProducers'));
     }
 
     /**
