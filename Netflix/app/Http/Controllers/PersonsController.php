@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Person;
+use App\Models\Movie;
 
 class PersonsController extends Controller
 {
@@ -42,10 +43,11 @@ class PersonsController extends Controller
 
     /**
      * Display the specified resource.
+     * 
      */
-    public function show(string $id)
+    public function show(Person $person)
     {
-        //
+        return View('Persons.show', compact('person'));
     }
 
     /**

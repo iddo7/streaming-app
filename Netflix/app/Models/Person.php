@@ -10,7 +10,7 @@ class Person extends Model
     protected $table = 'persons';
     use HasFactory;
 
-    public function movies() : HasMany
+    public function movies()
     {
         return $this->belongsToMany(Movie::class);
     }
