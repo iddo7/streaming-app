@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('duration_minutes');
             $table->foreignId('director_id')->constrained('persons');
             $table->foreignId('producer_id')->constrained('persons');
-            $table->date('annee');
+            $table->integer('annee');
             $table->integer('rating');
             $table->string('lien_video');
             $table->timestamps();

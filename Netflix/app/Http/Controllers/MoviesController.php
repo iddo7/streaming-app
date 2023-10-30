@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class MoviesController extends Controller
 {
@@ -11,7 +12,14 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        return View('Movies.index');
+        $movies = Movie::all();
+        $movieBefore2010 = Movie::where('annee', '<', 2010)->get();
+        $movieRecent = Movie::where('annee', '>', 2009)->get();
+        $movieGoodRating = Movie::where('rating', '>', 6)->get();
+        $movieLowerRating = Movie::where('rating', '<', 7)->get();
+        $movieLongDuration = Movie::where('duration_minutes', '>', 120)->get();
+
+        return View('Movies.index', compact('movies', 'movieBefore2010', 'movieRecent', 'movieGoodRating', 'movieLowerRating', 'movieLongDuration'));
     }
 
     /**
