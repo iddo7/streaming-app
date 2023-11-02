@@ -30,7 +30,7 @@ class PersonsController extends Controller
      */
     public function create()
     {
-        //
+        return View('Persons.create');
     }
 
     /**

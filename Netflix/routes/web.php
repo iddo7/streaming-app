@@ -29,5 +29,9 @@ Route::get('movies',
 Route::get('persons', 
 [PersonsController::class, 'index'])->name('persons.index');
 
+Route::get('/persons/create',
+[PersonsController::class, 'create'])->name('persons.create');
+
 Route::get('/persons/{person}', 
 [PersonsController::class, 'show'])->name('persons.show');
+
