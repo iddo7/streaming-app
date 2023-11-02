@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Person;
 use App\Models\Movie;
 
 class MoviesController extends Controller
@@ -41,9 +42,9 @@ class MoviesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Movie $movie)
     {
-        //
+        return View('Movies.show', compact('movie'));
     }
 
     /**

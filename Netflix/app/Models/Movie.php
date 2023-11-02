@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
+    protected $table = 'movies';
     use HasFactory;
+
+    public function persons()
+    {
+        return $this->belongsToMany(Person::class);
+    }
 }
