@@ -9,13 +9,13 @@
             <form method="post" action="{{ route('persons.store') }}">
             @csrf
                 <div class="mb-3">
-                    <label for="input_name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="input_name" name="input_name">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="input_gender" class="form-label">Gender</label>
-                        <select class="form-select" name="input_gender">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" name="gender">
                             <option selected>Select a gender</option>
                             <option value="male">male</option>
                             <option value="female">female</option>
@@ -24,18 +24,22 @@
                         </select>
                     </div>
                     <div class="col-6">
-                        <label for="input_name" class="form-label">Birthday</label>
-                        <input type="date" class="form-control" id="input_birthday" name="input_birthday">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="input_placeOfBirth" class="form-label">Place of birth</label>
-                        <input type="text" class="form-control" id="input_placeOfBirth" name="input_placeOfBirth">
+                        <label for="placeOfBirth" class="form-label">Place of birth</label>
+                        <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth">
                     </div>
                     <div class="col-6">
-                        <label for="input_mainRole" class="form-label">Main Role</label>
-                        <input type="text" class="form-control" id="input_mainRole" name="input_mainRole" placeholder="Ex: actor">
+                        <label for="mainRole" class="form-label">Main Role</label>
+                        <select class="form-select" name="mainRole">
+                            <option selected value="actor">actor</option>
+                            <option value="director">director</option>
+                            <option value="producer">producer</option>
+                        </select>
                     </div>
                 </div>
 
