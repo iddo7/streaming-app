@@ -13,7 +13,7 @@
         <div class="box">
           @if (count($movies))
             @foreach($movies as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -24,7 +24,7 @@
         <div class="box">
           @if (count($movieBefore2010))
             @foreach($movieBefore2010 as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -35,7 +35,7 @@
         <div class="box">
           @if (count($movieRecent))
             @foreach($movieRecent as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -46,7 +46,7 @@
         <div class="box">
           @if (count($movieGoodRating))
             @foreach($movieGoodRating as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -57,7 +57,7 @@
         <div class="box">
           @if (count($movieLowerRating))
             @foreach($movieLowerRating as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -68,7 +68,7 @@
         <div class="box">
           @if (count($movieLongDuration))
             @foreach($movieLongDuration as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
