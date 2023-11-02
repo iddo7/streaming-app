@@ -13,7 +13,7 @@
         <div class="box">
           @if (count($movies))
             @foreach($movies as $movie)
-                      <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                      <a href="{{ route('movies.show', [$movie]) }}"><img src="{{$movie->cover}}" alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
