@@ -32,6 +32,9 @@ Route::get('persons',
 Route::get('/persons/create',
 [PersonsController::class, 'create'])->name('persons.create');
 
+Route::post('/persons',
+[PersonsController::class, 'store'])->name('persons.store');
+
 Route::get('/persons/{person}', 
 [PersonsController::class, 'show'])->name('persons.show');
 

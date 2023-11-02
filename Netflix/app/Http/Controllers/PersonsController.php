@@ -38,7 +38,14 @@ class PersonsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $person = new Person($request->all());
+            $person->save();
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+        }
+        return redirect()->route('persons.index');
     }
 
     /**
