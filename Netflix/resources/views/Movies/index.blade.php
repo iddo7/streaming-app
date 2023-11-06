@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_bootstrap')
 
 @section('title', 'Movies page')
 
@@ -8,12 +8,15 @@
   
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
+    <div class='container-fluid'>
+      <a class="btn btn-default" href="{{ route('movies.create') }}">Ajouter</a> 
+    </div>
     <div class="location" id="home">
         <h1 id="home">Tout les films</h1>
         <div class="box">
           @if (count($movies))
             @foreach($movies as $movie)
-              <a href="{{ route('movies.show', [$movie]) }}"><img src="{{$movie->cover}}" alt=""></a>
+            <a href="{{ route('movies.show', [$movie]) }}"><img src='{{asset("images/$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>

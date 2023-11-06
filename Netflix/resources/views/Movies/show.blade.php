@@ -9,7 +9,7 @@
   <section class="main-container" >
     <div class="container-fluid">
         <div class="row hero-row">
-            <div class="col-12 hero" style="background-image: url('{{$movie->cover}}');">
+        <div class="col-12 hero" style="background-image: url('{{ asset("images/{$movie->cover}") }}');">
             </div>
         </div>
         <div class="row">
@@ -37,7 +37,7 @@
                 <a href=""><img src="{{$person->pictureUrl}}" alt=""></a>
             @endforeach
         @else
-            <p>We couldn't find any persons.</p>
+            <p>We couldn't find any actors.</p>
         @endif                
     </div>
     
