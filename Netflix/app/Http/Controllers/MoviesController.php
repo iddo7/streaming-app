@@ -26,9 +26,9 @@ class MoviesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Movie $movie)
+    public function create()
     {
-        return View('Movies.create', compact('movie'));
+        return View('Movies.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class MoviesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $movie = new Movie($request->all());
+            $movie->save();
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+        }
+        return redirect()->route('movies.index');
     }
 
     /**
