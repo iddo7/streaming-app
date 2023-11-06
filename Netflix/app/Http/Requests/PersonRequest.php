@@ -26,30 +26,37 @@ class PersonRequest extends FormRequest
             'name' => 'required|min:4|max:255',
             'gender' => ['required', Rule::in(['male', 'female', 'hog rider hog rider', 'buggy'])],
             'birthday' => 'required|date',
-            'placeOfBirth' => 'required|url',
-            'pictureUrl' => 'required|min:3|max:255',
+            'pictureUrl' => 'required|url',
+            'placeOfBirth' => 'required|min:3|max:255',
             'mainRole' => ['required', Rule::in(['actor', 'producer', 'director'])],
         ];
     }
 
     public function messages()
-{
-    return [
-        'name.required' => 'The name field is required.',
-        'name.min' => 'The name must be at least 4 characters.',
-        'name.max' => 'The name may not be greater than 255 characters.',
-        'gender.required' => 'The gender field is required.',
-        'gender.in' => 'The selected gender is invalid.',
-        'birthday.required' => 'The birthday field is required.',
-        'birthday.date' => 'The birthday must be a valid date.',
-        'placeOfBirth.required' => 'The place of birth field is required.',
-        'placeOfBirth.url' => 'The place of birth must be a valid URL.',
-        'pictureUrl.required' => 'The picture URL field is required.',
-        'pictureUrl.min' => 'The picture URL must be at least 3 characters.',
-        'pictureUrl.max' => 'The picture URL may not be greater than 255 characters.',
-        'mainRole.required' => 'The main role field is required.',
-        'mainRole.in' => 'The selected main role is invalid.',
-    ];
-}
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'name.min' => 'The name must be at least 4 characters.',
+            'name.max' => 'The name may not be greater than 255 characters.',
+            
+            'gender.required' => 'The gender field is required.',
+            'gender.in' => 'The selected gender is not valid. Choose from male, female, hog rider, or buggy.',
+            
+            'birthday.required' => 'The birthday field is required.',
+            'birthday.date' => 'The birthday must be a valid date.',
+            
+            'pictureUrl.required' => 'The picture URL field is required.',
+            'pictureUrl.url' => 'The picture URL must be a valid URL.',
+            
+            'placeOfBirth.required' => 'The place of birth field is required.',
+            'placeOfBirth.min' => 'The place of birth must be at least 3 characters.',
+            'placeOfBirth.max' => 'The place of birth may not be greater than 255 characters.',
+            
+            'mainRole.required' => 'The main role field is required.',
+            'mainRole.in' => 'The selected main role is not valid. Choose from actor, producer, or director.',
+        ];
+    }
+
+
 
 }

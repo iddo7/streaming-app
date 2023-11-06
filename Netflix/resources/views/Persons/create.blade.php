@@ -42,9 +42,27 @@
                         </select>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="pictureUrl" class="form-label">Profile Picture Url</label>
+                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" value="{{ old('pictureUrl') }}">
+                </div>
 
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <div class="row mb-3">
+                    <a href="{{ route('persons.index') }}" class="col-6 d-grid gap-2">
+                        <button type="button" class="btn btn-outline-light btn-lg">Cancel</button>
+                    </a>
+                    <div class="col-6 d-grid gap-2">
+                        <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+                    </div>
+                </div>
             </form>
+            @if(isset($errors) && $errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </div>
