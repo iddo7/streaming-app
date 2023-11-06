@@ -16,29 +16,29 @@
                     <div class="col-6">
                         <label for="gender" class="form-label">Gender</label>
                         <select class="form-select" name="gender">
-                            <option selected>Select a gender</option>
-                            <option value="male">male</option>
-                            <option value="female">female</option>
-                            <option value="hog rider hog rider">hog rider hog rider</option>
-                            <option value="buggy">buggy</option>
+                            <option {{ (old('gender') == '-1' || old('gender') == null) ? 'selected' : null }} value="-1">Select a gender</option>
+                            <option {{ old('gender') == 'male' ? 'selected' : null }} value="male">male</option>
+                            <option {{ old('gender') == 'female' ? 'selected' : null }} value="female">female</option>
+                            <option {{ old('gender') == 'hog rider hog rider' ? 'selected' : null }} value="hog rider hog rider">hog rider hog rider</option>
+                            <option {{ old('gender') == 'buggy' ? 'selected' : null }} value="buggy">buggy</option>
                         </select>
                     </div>
                     <div class="col-6">
                         <label for="birthday" class="form-label">Birthday</label>
-                        <input type="date" class="form-control" id="birthday" name="birthday">
+                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{ old('birthday') }}">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
                         <label for="placeOfBirth" class="form-label">Place of birth</label>
-                        <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth">
+                        <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth" value="{{ old('placeOfBirth') }}">
                     </div>
                     <div class="col-6">
                         <label for="mainRole" class="form-label">Main Role</label>
                         <select class="form-select" name="mainRole">
-                            <option selected value="actor">actor</option>
-                            <option value="director">director</option>
-                            <option value="producer">producer</option>
+                            <option {{ (old('mainRole') == 'actor' || old('mainRole') == null) ? 'selected' : null }} value="actor">actor</option>
+                            <option {{ old('mainRole') == 'director' ? 'selected' : null }} value="director">director</option>
+                            <option {{ old('mainRole') == 'producer' ? 'selected' : null }} value="producer">producer</option>
                         </select>
                     </div>
                 </div>
