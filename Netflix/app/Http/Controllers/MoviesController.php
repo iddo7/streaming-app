@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
+use App\Http\Requests\MoviePersonRequest;
+use Illuminate\Support\Facades\Log;
 
 class MoviesController extends Controller
 {
@@ -31,12 +33,47 @@ class MoviesController extends Controller
         return View('Movies.create', compact('movie'));
     }
 
+    public function createMoviePerson()
+    {
+        $movies = Movie::orderBy('annee')->get();
+        $persons = Person::orderBy('name')->get();
+
+        return View('MoviePerson.create', compact('movies', 'persons'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         //
+    }
+    public function storeMoviePerson(MoviePersonRequest $request)
+    {
+        try 
+        {
+            $movie = Movie::find($request->movie_id);
+            $person = Person::find($request->person_id);
+
+            // Verifying if the relation already exists
+            if ($movie->persons->contains($person))
+            {
+                Log::debut("This relation already exists");
+                return;
+            }
+
+            $movie->persons()->attach($movie);
+            $movie->save();
+
+            return redirect()->route('movies.index');
+        }
+        catch(\Throwable $e) 
+        {
+            // Log file : Storage\Logs\Laravel.log
+            Log::debug($e);
+            return redirect()->route('movies.index');
+        }
+        return redirect()->route('movies.index');
     }
 
     /**
