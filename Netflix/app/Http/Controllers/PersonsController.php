@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
+use App\Http\Requests\PersonRequest;
 
 class PersonsController extends Controller
 {
@@ -30,15 +31,22 @@ class PersonsController extends Controller
      */
     public function create()
     {
-
+        return View('Persons.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
-        //
+        try {
+            $person = new Person($request->all());
+            $person->save();
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+        }
+        return redirect()->route('persons.index');
     }
 
     /**

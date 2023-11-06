@@ -1,6 +1,6 @@
 /* CSS VARIABLES */
 :root {
-  --primary: #141414;
+  --primary: #222222;
   --light: #F3F3F3;
   --dark: 	#686868;
 }
@@ -41,7 +41,7 @@ header {
     "nt mn mn sb . . . "; 
   background-color: var(--primary);
   width: 100%;
-  margin-bottom: 0px;  
+  margin-bottom: 0px;
 }
 
 .netflixLogo {
@@ -162,6 +162,11 @@ header {
 
 .mt-6 {
   margin-top: 100px;
+}
+
+
+a {
+  text-decoration: none;
 }
 
 
