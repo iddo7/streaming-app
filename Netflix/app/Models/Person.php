@@ -10,6 +10,8 @@ class Person extends Model
     protected $table = 'persons';
     use HasFactory;
 
+    protected $fillable = ['name', 'gender', 'birthday', 'placeOfBirth', 'pictureUrl', 'mainRole'];
+
     public function movies()
     {
         return $this->belongsToMany(Movie::class);

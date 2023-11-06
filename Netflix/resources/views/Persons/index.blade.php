@@ -1,14 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.app_bootstrap')
 
 @section('title', 'Persons page')
 @section('content')
 
 <div class="wrapper">
+  
 
-  
-  
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-2 d-grid gap-2">
+                <a href="{{ route('persons.create') }}" class="btn btn-danger btn-lg">Add</a>
+            </div>
+        </div>
+    </div>
     <div class="location" id="home">
         <h1 id="home">All the people</h1>
         <div class="box">
