@@ -38,3 +38,6 @@ Route::get('persons',
 Route::get('/persons/{person}', 
 [PersonsController::class, 'show'])->name('persons.show');
 
+Route::post('/movies',
+[MoviesController::class, 'store'])->name('movies.store');
+

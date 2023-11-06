@@ -10,6 +10,8 @@ class Movie extends Model
     protected $table = 'movies';
     use HasFactory;
 
+    protected $fillable = ['']
+
     public function persons()
     {
         return $this->belongsToMany(Person::class);
