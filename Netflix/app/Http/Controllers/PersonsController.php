@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\PersonRequest;
+use Illuminate\Support\Facades\Log;
 
 class PersonsController extends Controller
 {

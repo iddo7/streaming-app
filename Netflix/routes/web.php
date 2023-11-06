@@ -26,6 +26,11 @@ Route::get('pokemons',
 Route::get('movies', 
 [MoviesController::class, 'index'])->name('movies.index');
 
+Route::get('/movie-person/create', 
+[MoviesController::class, 'createMoviePerson'])->name('movie-person.create');
+Route::post('/movie-person/', 
+[MoviesController::class, 'storeMoviePerson'])->name('movie-person.store');
+
 Route::get('/movies/create', 
 [MoviesController::class, 'create'])->name('movies.create');
 
@@ -37,7 +42,6 @@ Route::get('persons',
 
 Route::get('/persons/create',
 [PersonsController::class, 'create'])->name('persons.create');
-
 Route::post('/persons',
 [PersonsController::class, 'store'])->name('persons.store');
 
