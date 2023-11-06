@@ -34,7 +34,7 @@
         <?php $persons = $movie->persons ?>
         @if (count($persons))
             @foreach($persons as $person)
-                <a href=""><img src="{{$person->pictureUrl}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{$person->pictureUrl}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any actors.</p>
