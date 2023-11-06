@@ -26,6 +26,9 @@ Route::get('pokemons',
 Route::get('movies', 
 [MoviesController::class, 'index'])->name('movies.index');
 
+Route::get('/movie-person/create', 
+[MoviesController::class, 'create'])->name('movies.create');
+
 Route::get('/movies/create', 
 [MoviesController::class, 'create'])->name('movies.create');
 
