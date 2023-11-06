@@ -15,13 +15,27 @@
                 </div>
                 <div class="col-6">
                     <label for="input_cover" class="form-label">Director</label>
-                    <input type="text" class="form-control" id="input_director" name="{{ old('input_director') }}">
+                    <select class="form-select" name="person_id">
+                        <option value="-1" selected>Select a person</option>
+                        @foreach($persons as $person)
+                            <option
+                                value="{{ $person->id }}"
+                                >{{ $person->name }}</option>
+                        @endforeach
+                    </select>                
                 </div>
                 </div>
                 <div class="row mb-3">
                 <div class="col-6">
                     <label for="input_name" class="form-label">Producer</label>
-                    <input type="text" class="form-control" id="input_producer" name="{{ old('input_producer') }}">
+                    <select class="form-select" name="person_id">
+                        <option value="-1" selected>Select a person</option>
+                        @foreach($persons as $person)
+                            <option
+                                value="{{ $person->id }}"
+                                >{{ $person->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-6">
                     <label for="input_cover" class="form-label">Cover</label>

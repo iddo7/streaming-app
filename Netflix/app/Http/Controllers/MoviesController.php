@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
+use App\Http\Requests\MovieRequest;
+use Illuminate\Support\Facades\Log;
+
 
 class MoviesController extends Controller
 {
@@ -28,7 +31,9 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        return View('Movies.create');
+        $persons = Person::OrderBy('name')->get();
+
+        return View('Movies.create', compact('persons'));
     }
 
     /**
