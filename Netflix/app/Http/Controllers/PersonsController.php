@@ -90,6 +90,19 @@ class PersonsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $person = Person::findOrFail($id);
+
+            // If a person has a movie, detach it
+            $person->movies()->detach();
+            $person->delete();
+
+            return redirect()->route('persons.index')->with('message', "Deleting" . $person->name . " was successful!");
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('persons.index')->with('message', "Deleting" . $person->name . " was not successful!");
+        }
+        return redirect()->route('persons.index');
     }
 }

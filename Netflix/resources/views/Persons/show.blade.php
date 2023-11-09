@@ -15,9 +15,12 @@
         <div class="row">
             <div class="col">
                 <h1 class="p-0">{{$person->name}}</h1>
-            </div>
-            <div class="col-2 d-grid gap-2 d-flex align-items-center">
                 <a href="{{ route('persons.edit', [$person]) }}" class="btn btn-outline-light btn-lg">Edit</a>
+                <form method="post" action="{{ route('persons.destroy', [$person->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
+                </form>
             </div>
         </div>
         <div class="row">
