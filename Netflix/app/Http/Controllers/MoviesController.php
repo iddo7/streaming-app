@@ -62,7 +62,7 @@ class MoviesController extends Controller
                 return;
             }
 
-            $movie->persons()->attach($movie);
+            $movie->persons()->attach($person);
             $movie->save();
 
             return redirect()->route('movies.index');

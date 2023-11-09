@@ -34,7 +34,7 @@
         <?php $movies = $person->movies ?>
         @if (count($movies))
             @foreach($movies as $movie)
-                <a href=""><img src="{{$movie->cover}}" alt=""></a>
+                <a href=""><img src="{{asset("images/$movie->cover")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
