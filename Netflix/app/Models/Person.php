@@ -16,4 +16,15 @@ class Person extends Model
     {
         return $this->belongsToMany(Movie::class);
     }
+
+    // ?????????????
+    public function director()
+    {
+        return this->hasMany(Movie::class);
+    }
+
+    public function producer()
+    {
+        return this->hasMany(Movie::class);
+    }
 }
