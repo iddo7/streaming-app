@@ -48,6 +48,11 @@ Route::post('/persons',
 Route::get('/persons/{person}', 
 [PersonsController::class, 'show'])->name('persons.show');
 
+Route::get('/persons/{person}/edit/', 
+[PersonsController::class, 'edit'])->name('persons.edit');
+Route::patch('/persons/{person}/edit',
+[PersonsController::class, 'update'])->name('persons.update');
+
 Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store');
 
