@@ -4,7 +4,6 @@
 @section('content')
 
 <div class="wrapper">
-  
 
   <!-- MAIN CONTAINER -->
   <section class="main-container" >

@@ -13,8 +13,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col">
                 <h1 class="p-0">{{$person->name}}</h1>
+            </div>
+            <div class="col-2 d-grid gap-2 d-flex align-items-center">
+                <a href="{{ route('persons.edit', [$person]) }}" class="btn btn-outline-light btn-lg">Edit</a>
             </div>
         </div>
         <div class="row">
@@ -25,6 +28,8 @@
                     <li class="list-group-item">Place of birth: {{$person->placeOfBirth}}</li>
                     <li class="list-group-item">Main Role: {{$person->mainRole}}</li>
                 </ul>
+            
+
             </div>
         </div>
     </div>
