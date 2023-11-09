@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PersonRequest extends FormRequest
+class MovieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,40 +23,46 @@ class PersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:4|max:255',
-            'gender' => ['required', Rule::in(['male', 'female', 'hog rider hog rider', 'buggy'])],
-            'birthday' => 'required|date',
-            'pictureUrl' => 'required|url',
-            'placeOfBirth' => 'required|min:3|max:255',
-            'mainRole' => ['required', Rule::in(['actor', 'producer', 'director'])],
+            'titre' => 'required|min:4|max:255',
+            'director_id' => 'required',
+            'producer_id' => 'required',
+            'cover' => 'required|url',
+            'duration_minutes' => 'required',
+            'annee' => 'required',
+            'rating' => 'required',
+            'lien_video' => 'required|url',
+            'summary' => 'required'
         ];
+        
+        
     }
 
     public function messages()
     {
+
         return [
-            'name.required' => 'The name field is required.',
-            'name.min' => 'The name must be at least 4 characters.',
-            'name.max' => 'The name may not be greater than 255 characters.',
+            'titre.required' => 'The title field is required.',
+            'titre.min' => 'The title must be at least 4 characters.',
+            'titre.max' => 'The title may not be greater than 255 characters.',
             
-            'gender.required' => 'The gender field is required.',
-            'gender.in' => 'The selected gender is not valid. Choose from male, female, hog rider, or buggy.',
+            'director_id.required' => 'The director field is required.',
             
-            'birthday.required' => 'The birthday field is required.',
-            'birthday.date' => 'The birthday must be a valid date.',
+            'producer_id.required' => 'The producer field is required.',
             
-            'pictureUrl.required' => 'The picture URL field is required.',
-            'pictureUrl.url' => 'The picture URL must be a valid URL.',
+            'cover.required' => 'The cover URL field is required.',
+            'cover.url' => 'The cover URL must be a valid URL.',
             
-            'placeOfBirth.required' => 'The place of birth field is required.',
-            'placeOfBirth.min' => 'The place of birth must be at least 3 characters.',
-            'placeOfBirth.max' => 'The place of birth may not be greater than 255 characters.',
+            'duration_minutes.required' => 'The duration in minutes field is required.',
             
-            'mainRole.required' => 'The main role field is required.',
-            'mainRole.in' => 'The selected main role is not valid. Choose from actor, producer, or director.',
+            'annee.required' => 'The year field is required.',
+            
+            'rating.required' => 'The rating field is required.',
+            
+            'lien_video.required' => 'The video URL field is required.',
+            'lien_video.url' => 'The video URL must be a valid URL.',
+            
+            'summary.required' => 'The summary field is required.'
         ];
+        
     }
-
-
-
 }
