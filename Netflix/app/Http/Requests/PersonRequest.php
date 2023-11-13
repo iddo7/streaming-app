@@ -40,7 +40,7 @@ class PersonRequest extends FormRequest
             'name.max' => 'The name may not be greater than 255 characters.',
             
             'gender.required' => 'The gender field is required.',
-            'gender.in' => 'The selected gender is not valid. Choose from male, female, hog rider, or buggy.',
+            'gender.in' => 'The selected gender is not valid. Choose from male, female, hog rider hog rider, or buggy.',
             
             'birthday.required' => 'The birthday field is required.',
             'birthday.date' => 'The birthday must be a valid date.',

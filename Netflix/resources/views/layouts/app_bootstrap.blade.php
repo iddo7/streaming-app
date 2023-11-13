@@ -29,6 +29,14 @@
       <a href="#">Account</a>        
     </nav>      
   </header>
+  
+  @if(isset($errors) && $errors->any())
+      <div class="alert alert-danger mt-5">
+          @foreach($errors->all() as $error)
+              <p>{{ $error }}</p>
+          @endforeach
+      </div>
+  @endif
   <!-- END OF HEADER -->
 
     @yield('content')

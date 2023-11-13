@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\PersonRequest;
+use Illuminate\Support\Facades\Log;
 
 class PersonsController extends Controller
 {
@@ -61,17 +62,27 @@ class PersonsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Person $person)
     {
-        //
+        return View('persons.edit', compact('person'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PersonRequest $request, Person $person)
     {
-        //
+        try {
+            $person->update($request->all());
+            $person->save();
+
+            return redirect()->route('persons.index')->with('message', "Editing " . $person->name . " was successful!");
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('persons.index')->with('message', "Editing " . $person->name . " was not successful!");
+        }
+        return redirect()->route('persons.index');
     }
 
     /**
