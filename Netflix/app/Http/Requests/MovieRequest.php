@@ -23,10 +23,10 @@ class MovieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titre' => 'required|min:4|max:255',
-            'director_id' => 'required',
-            'producer_id' => 'required',
-            'cover' => 'required|url',
+            'title' => 'required|min:4|max:255',
+            'director_id' => ['numeric', 'min:0'],
+            'producer_id' => ['numeric', 'min:0'],
+            'cover' => 'required',
             'duration_minutes' => 'required',
             'annee' => 'required',
             'rating' => 'required',
@@ -41,18 +41,18 @@ class MovieRequest extends FormRequest
     {
 
         return [
-            'titre.required' => 'The title field is required.',
-            'titre.min' => 'The title must be at least 4 characters.',
-            'titre.max' => 'The title may not be greater than 255 characters.',
+            'title.required' => 'The title field is required.',
+            'title.min' => 'The title must be at least 4 characters.',
+            'title.max' => 'The title may not be greater than 255 characters.',
             
-            'director_id.required' => 'The director field is required.',
+            'director_id.min' => 'Please select a director',
             
-            'producer_id.required' => 'The producer field is required.',
+            'producer_id.min' => 'Please select a producer',
+
             
             'cover.required' => 'The cover URL field is required.',
-            'cover.url' => 'The cover URL must be a valid URL.',
             
-            'duration_minutes.required' => 'The duration in minutes field is required.',
+            'durations_minutes.required' => 'The duration in minutes field is required.',
             
             'annee.required' => 'The year field is required.',
             

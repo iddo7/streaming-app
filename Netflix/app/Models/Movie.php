@@ -10,7 +10,7 @@ class Movie extends Model
     protected $table = 'movies';
     use HasFactory;
 
-    protected $fillable = ['title', 'director_id', 'producer_id', 'cover', 'duration_minutes', 'annee', 'rating', 'lien_video', 'summary'];
+    protected $fillable = ['title', 'summary', 'cover', 'duration_minutes', 'director_id', 'producer_id', 'annee', 'rating', 'lien_video' ];
 
     public function persons()
     {

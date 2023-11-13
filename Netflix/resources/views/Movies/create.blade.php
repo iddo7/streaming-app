@@ -11,7 +11,7 @@
                 <div class="row mb-3">
                 <div class="col-6">
                     <label for="title" class="form-label">Titre</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('titre') }}">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                 </div>
                 <div class="col-6">
                     <label for="cover" class="form-label">Director</label>
@@ -19,8 +19,8 @@
                         <option value="-1" selected>Select a person</option>
                         @foreach($persons as $person)
                             <option
-                                value="{{ $person->id }}"
-                                >{{ $person->name }}</option>
+                                value="{{ $person->id }}" {{ $person->id == old('director_id')}} ?
+                                'selected' : null }}>{{ $person->name }}</option>
                         @endforeach
                     </select>                
                 </div>
@@ -44,8 +44,8 @@
                 </div>
                 <div class="row mb-3">
                 <div class="col-6">
-                    <label for="durations_minutes" class="form-label">Duration (minutes)</label>
-                    <input type="number" class="form-control" id="durations_minutes" value="{{ old('durations_minutes') }}" name="durations_minutes">
+                    <label for="duration_minutes" class="form-label">Duration (minutes)</label>
+                    <input type="number" class="form-control" id="duration_minutes" value="{{ old('duration_minutes') }}" name="duration_minutes">
                 </div>
                 <div class="col-6">
                     <label for="annee" class="form-label">Année</label>
@@ -64,7 +64,7 @@
                 </div>                
                 <div class="mb-3">
                     <label for="summary" class="form-label">Summary</label>
-                    <textarea class="form-control" id="summary" value="{{ old('summary') }}" name="summary"></textarea>
+                    <input class="form-control" id="summary" value="{{ old('summary') }}" name="summary"></input>
                 </div>
                 <button type="submit" class="btn btn-danger">Submit</button>
             </form>
