@@ -8,8 +8,8 @@
   
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
-    <div class='container-fluid'>
-      <a class="btn btn-default" href="{{ route('movies.create') }}">Ajouter</a> 
+    <div class='container-fluid '>
+      <a class="btn btn-danger btn-lg " href="{{ route('movies.create') }}">Ajouter</a> 
     </div>
     <div class="location" id="home">
         <h1 id="home">Tout les films</h1>
