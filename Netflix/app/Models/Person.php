@@ -16,4 +16,14 @@ class Person extends Model
     {
         return $this->belongsToMany(Movie::class);
     }
+
+    public function moviesDirected()
+    {
+        return $this->hasMany(Movie::class, 'director_id');
+    }
+
+    public function moviesProduced()
+    {
+        return $this->hasMany(Movie::class, 'producer_id');
+    }
 }

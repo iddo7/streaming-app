@@ -48,6 +48,9 @@ Route::post('/persons',
 Route::get('/persons/{person}', 
 [PersonsController::class, 'show'])->name('persons.show');
 
+Route::delete('/persons/{id}', 
+[PersonsController::class, 'destroy'])->name('persons.destroy');
+
 Route::get('/persons/{person}/edit/', 
 [PersonsController::class, 'edit'])->name('persons.edit');
 Route::patch('/persons/{person}/edit',
