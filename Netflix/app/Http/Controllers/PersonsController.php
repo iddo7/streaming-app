@@ -93,15 +93,26 @@ class PersonsController extends Controller
         try {
             $person = Person::findOrFail($id);
 
+            /* - Checking if the person is director or producer of a movie - */
+            $numberOfDirectedMovies = count($person->moviesDirected);
+            $numberOfProducedMovies = count($person->moviesProduced);
+            if ($numberOfDirectedMovies > 0) {
+                $errorMessage = "Cannot delete " . $person->name . " because they direct " . $numberOfDirectedMovies . " movie(s)";
+                return redirect()->route('persons.show', [$person])->withErrors($errorMessage);
+            }
+            if ($numberOfProducedMovies > 0) {
+                $errorMessage = "Cannot delete " . $person->name . " because they direct " . $numberOfProducedMovies . " movie(s)";
+                return redirect()->route('persons.show', [$person])->withErrors($errorMessage);
+            }
+
             // If a person has a movie, detach it
             $person->movies()->detach();
             $person->delete();
-
-            return redirect()->route('persons.index')->with('message', "Deleting" . $person->name . " was successful!");
+            return redirect()->route('persons.index')->with('messages', "Deleting " . $person->name . " was successful!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
-            return redirect()->route('persons.index')->with('message', "Deleting" . $person->name . " was not successful!");
+            return redirect()->route('persons.index')->withErrors("Deleting " . $person->name . " was not successful!");
         }
         return redirect()->route('persons.index');
     }

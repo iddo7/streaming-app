@@ -19,11 +19,11 @@ class Person extends Model
 
     public function moviesDirected()
     {
-        return $this->hasMany(Movie::class);
+        return $this->hasMany(Movie::class, 'director_id');
     }
 
     public function moviesProduced()
     {
-        return $this->hasMany(Movie::class);
+        return $this->hasMany(Movie::class, 'producer_id');
     }
 }

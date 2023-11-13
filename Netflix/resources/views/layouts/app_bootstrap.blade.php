@@ -30,13 +30,23 @@
     </nav>      
   </header>
   
-  @if(isset($errors) && $errors->any())
-      <div class="alert alert-danger mt-5">
-          @foreach($errors->all() as $error)
-              <p>{{ $error }}</p>
-          @endforeach
-      </div>
-  @endif
+  <div class="container mt-5">
+    @if(isset($errors) && $errors->any())
+        <div class="alert alert-danger mt-5">
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+    
+    @if(isset($messages) && $messages->any())
+        <div class="alert alert-danger mt-5">
+            @foreach($messages->all() as $message)
+                <p>{{ $message }}</p>
+            @endforeach
+        </div>
+    @endif
+  </div>
   <!-- END OF HEADER -->
 
     @yield('content')
