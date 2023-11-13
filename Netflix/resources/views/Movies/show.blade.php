@@ -29,6 +29,13 @@
         </div>
     </div>
 
+    <h1 id="tvShows">Producer</h1>
+    <div class="box">
+        <?php $person = $movie->producer ?>
+        <!-- NEEDS CHECK IF PRODUCER IS NULL -->
+        <a href="{{ route('persons.show', [$person]) }}"><img src="{{$person->pictureUrl}}" alt=""></a>
+    </div>
+
     <h1 id="tvShows">Actors that participated in this movie</h1>
     <div class="box">
         <?php $persons = $movie->persons ?>
