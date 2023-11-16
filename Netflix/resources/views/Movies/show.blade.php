@@ -17,6 +17,12 @@
                 <h1 class="p-0">{{$movie->title}}</h1>
             </div>
         </div>
+        <a href="{{ route('movies.edit', [$movie]) }}" class="btn btn-outline-light btn-lg">Edit</a>
+        <form method="post" action="{{ route('movies.destroy', [$movie->id]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
+        </form>
         <div class="row">
             <div class="col-3">
                 <ul class="list-group">

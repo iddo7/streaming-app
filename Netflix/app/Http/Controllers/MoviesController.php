@@ -96,17 +96,29 @@ class MoviesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Movie $movie)
     {
-        //
+        $persons = Person::OrderBy('name')->get();
+
+        return View('movies.edit', compact('movie'), compact('persons'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MovieRequest $request, Movie $movie)
     {
-        //
+        try {
+            $movie->update($request->all());
+            $movie->save();
+
+            return redirect()->route('movies.index')->with('message', "Editing " . $movie->title . " was successful!");
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('movies.index')->with('message', "Editing " . $movie->title . " was not successful!");
+        }
+        return redirect()->route('movies.index');
     }
 
     /**
@@ -114,6 +126,18 @@ class MoviesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        try {
+            $movie = Movie::findOrFail($id);
+
+
+            // If a person has a movie, detach it
+            $movie->persons()->detach();
+            $movie->delete();
+            return redirect()->route('movies.index')->with('messages', "Deleting " . $movie->title . " was successful!");
+        }
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('movies.index')->withErrors("Deleting " . $movie->title . " was not successful!");
+        }
+        return redirect()->route('movies.index');    }
 }
