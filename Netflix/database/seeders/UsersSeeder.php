@@ -30,6 +30,20 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('soleil1234'),
                 'role' => 'admin',
             ],
+            [
+                'email' => 'normal@netflix.com',
+                'firstName' => 'Normal',
+                'lastName' => 'Doe',
+                'password' => Hash::make('normal'),
+                'role' => 'normal',
+            ],
+            [
+                'email' => 'kid@netflix.com',
+                'firstName' => 'Kid',
+                'lastName' => 'Doe',
+                'password' => Hash::make('kid'),
+                'role' => 'kid',
+            ],
         ]);
     }
 }
