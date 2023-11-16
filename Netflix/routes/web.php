@@ -59,3 +59,10 @@ Route::patch('/persons/{person}/edit',
 Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store');
 
+
+Route::get('/loginPage',
+[UsersController::class, 'index'])->name('login.page');
+Route::post('/login',
+[UsersController::class, 'login'])->name('login.login');
+Route::post('/logout',
+[UsersController::class, 'logout'])->name('login.logout');
