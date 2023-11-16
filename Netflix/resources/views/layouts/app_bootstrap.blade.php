@@ -22,7 +22,6 @@
       <a href="{{ route('movies.index') }}">Movies</a>
       <a href="{{ route('persons.index') }}">People</a>
       <a href="#">Recently Added</a>
-      <a href="{{ route('users.processLogout') }}">Logout</a>        
     </nav>
     <nav class="sub-nav d-flex align-items-center">
       <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
@@ -33,7 +32,7 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="accountDropdown">
           <li><a class="dropdown-item" href="#">View Account</a></li>
-          <li><a class="dropdown-item" href="#">Logout</a></li>
+          <li><a class="dropdown-item" href="{{ route('users.processLogout') }}">Logout</a></li>
         </ul>
       </div>
     </nav>      

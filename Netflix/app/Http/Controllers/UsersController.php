@@ -31,6 +31,6 @@ class UsersController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('movies.index')->with(['messages', "Deconnected successfully"]);
+        return redirect()->route('login')->with(['messages', "Deconnected successfully"]);
     }
 }
