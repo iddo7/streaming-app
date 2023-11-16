@@ -8,7 +8,7 @@ class UsersController extends Controller
 {
     public function loginPage() 
     {
-        return View('Users.loginPage');
+        return View('Users.login');
     }
 
     public function login(Request $request)
