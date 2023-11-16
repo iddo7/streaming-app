@@ -22,40 +22,40 @@ Route::get('/', function () {
 });
 
 Route::get('movies', 
-[MoviesController::class, 'index'])->name('movies.index');
+[MoviesController::class, 'index'])->name('movies.index')->middleware('CheckRole:admin,usager,kid');
 
 Route::get('/movie-person/create', 
-[MoviesController::class, 'createMoviePerson'])->name('movie-person.create')->middleware('auth');
+[MoviesController::class, 'createMoviePerson'])->name('movie-person.create')->middleware('CheckRole:admin');
 Route::post('/movie-person/', 
-[MoviesController::class, 'storeMoviePerson'])->name('movie-person.store')->middleware('auth');
+[MoviesController::class, 'storeMoviePerson'])->name('movie-person.store')->middleware('CheckRole:admin');
 
 Route::get('/movies/create', 
-[MoviesController::class, 'create'])->name('movies.create')->middleware('auth');
+[MoviesController::class, 'create'])->name('movies.create')->middleware('CheckRole:admin');
 
 Route::get('/movies/{movie}', 
-[MoviesController::class, 'show'])->name('movies.show');
+[MoviesController::class, 'show'])->name('movies.show')->middleware('CheckRole:admin,usager,kid');
 
 Route::get('persons', 
-[PersonsController::class, 'index'])->name('persons.index');
+[PersonsController::class, 'index'])->name('persons.index')->middleware('CheckRole:admin,usager,kid');
 
 Route::get('/persons/create',
-[PersonsController::class, 'create'])->name('persons.create')->middleware('auth');
+[PersonsController::class, 'create'])->name('persons.create')->middleware('CheckRole:admin');
 Route::post('/persons',
-[PersonsController::class, 'store'])->name('persons.store')->middleware('auth');
+[PersonsController::class, 'store'])->name('persons.store')->middleware('CheckRole:admin');
 
 Route::get('/persons/{person}', 
-[PersonsController::class, 'show'])->name('persons.show');
+[PersonsController::class, 'show'])->name('persons.show')->middleware('CheckRole:admin,usager,kid');
 
 Route::delete('/persons/{id}', 
-[PersonsController::class, 'destroy'])->name('persons.destroy')->middleware('auth');
+[PersonsController::class, 'destroy'])->name('persons.destroy')->middleware('CheckRole:admin');
 
 Route::get('/persons/{person}/edit/', 
-[PersonsController::class, 'edit'])->name('persons.edit')->middleware('auth');
+[PersonsController::class, 'edit'])->name('persons.edit')->middleware('CheckRole:admin');
 Route::patch('/persons/{person}/edit',
-[PersonsController::class, 'update'])->name('persons.update')->middleware('auth');
+[PersonsController::class, 'update'])->name('persons.update')->middleware('CheckRole:admin');
 
 Route::post('/movies',
-[MoviesController::class, 'store'])->name('movies.store')->middleware('auth');
+[MoviesController::class, 'store'])->name('movies.store')->middleware('CheckRole:admin');
 
 
 Route::get('/login',
