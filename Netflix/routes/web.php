@@ -56,6 +56,14 @@ Route::get('/persons/{person}/edit/',
 Route::patch('/persons/{person}/edit',
 [PersonsController::class, 'update'])->name('persons.update');
 
+Route::delete('/movies/{id}', 
+[MoviesController::class, 'destroy'])->name('movies.destroy');
+
+Route::get('/movies/{movie}/edit/', 
+[MoviesController::class, 'edit'])->name('movies.edit');
+Route::patch('/movies/{movie}/edit',
+[MoviesController::class, 'update'])->name('movies.update');
+
 Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store');
 
