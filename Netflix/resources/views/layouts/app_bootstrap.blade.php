@@ -37,7 +37,6 @@
         </ul>
       </div>
     </nav>      
-      <a href="#">Account</a>
     </nav>
   </header>
   
