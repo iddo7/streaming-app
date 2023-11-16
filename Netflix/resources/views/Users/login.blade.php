@@ -7,6 +7,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-4">
             <form method="post" action="{{ route('users.processLogin') }}">
+            @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}">

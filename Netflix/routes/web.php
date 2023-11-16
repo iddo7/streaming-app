@@ -62,5 +62,5 @@ Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');
 Route::post('/processLogin',
 [UsersController::class, 'login'])->name('users.processLogin');
-Route::post('/processLogout',
+Route::get('/processLogout',
 [UsersController::class, 'logout'])->name('users.processLogout');

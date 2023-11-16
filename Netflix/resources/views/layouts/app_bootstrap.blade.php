@@ -21,13 +21,13 @@
       <a href="{{ route('movies.index') }}">Movies</a>
       <a href="{{ route('persons.index') }}">People</a>
       <a href="#">Recently Added</a>
-      <a target="_blank" href="https://codepen.io/cb2307/full/NzaOrm">Portfolio</a>        
+      <a href="{{ route('users.processLogout') }}">Logout</a>        
     </nav>
     <nav class="sub-nav">
       <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
       <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-      <a href="#">Account</a>        
-    </nav>      
+      <a href="#">Account</a>
+    </nav>
   </header>
   
   <div class="container mt-5">
