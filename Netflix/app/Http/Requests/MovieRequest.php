@@ -26,7 +26,7 @@ class MovieRequest extends FormRequest
             'title' => 'required|min:4|max:255',
             'director_id' => ['numeric', 'min:0'],
             'producer_id' => ['numeric', 'min:0'],
-            'cover' => 'required',
+            'cover' => 'required|image|mimes:png,jpeg,jpg,gif|max:4096',
             'duration_minutes' => 'required',
             'annee' => 'required',
             'rating' => 'required',
@@ -50,8 +50,9 @@ class MovieRequest extends FormRequest
             'producer_id.min' => 'Please select a producer',
 
             
-            'cover.required' => 'The cover URL field is required.',
-            
+            'cover.mimes' => 'Le type de fichier n\'est pas reconnu (png jpg, gif).',
+            'cover.max' => 'La taille de l\'image ne peut pas dépasser 4096Kb.',
+                        
             'durations_minutes.required' => 'The duration in minutes field is required.',
             
             'annee.required' => 'The year field is required.',

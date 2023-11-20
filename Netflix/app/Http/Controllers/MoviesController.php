@@ -48,14 +48,29 @@ class MoviesController extends Controller
      */
     public function store(MovieRequest $request)
     {
+
+    try {    
+        $movie = new Movie($request->all());
+        $movie->save();
+
+        $uploadedFile = $request->file('cover');
+        $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
+
         try {
-            $movie = new Movie($request->all());
-            $movie->save();
+            $request->cover->move(public_path('img/movies'), $nomFichierUnique);
         }
-        catch (\Throwable $e) {
-            Log::debug($e);
+        catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
+           Log::error("Erreur lors du téléversement du fichier. ", [$e]);
         }
-        return redirect()->route('movies.index');
+
+        $movie->cover = $nomFichierUnique;
+        $movie->save();
+        return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
+    }
+    catch (\Throwable $e) {
+        Log::debug($e);
+    }
+        return redirect()->route('movies.index')->withErrors(['l\'ajout n\'a pas fonctionné']);
     }
     public function storeMoviePerson(MoviePersonRequest $request)
     {
@@ -63,6 +78,8 @@ class MoviesController extends Controller
         {
             $movie = Movie::find($request->movie_id);
             $person = Person::find($request->person_id);
+
+
 
             // Verifying if the relation already exists
             if ($movie->persons->contains($person))

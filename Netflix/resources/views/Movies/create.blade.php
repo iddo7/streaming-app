@@ -6,7 +6,7 @@
 <div class="container mt-6">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
-            <form method="post" action="{{ route('movies.store') }}">
+            <form method="post" action="{{ route('movies.store') }}" enctype="multipart/form-data">
             @csrf
                 <div class="row mb-3">
                 <div class="col-6">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-6">
                     <label for="cover" class="form-label">Cover</label>
-                    <input type="text" class="form-control" id="cover" name="cover" value="{{ old('cover') }}">
+                    <input type="file" class="form-control-file" id="cover" name="cover" value="{{ old('cover') }}">
                 </div>
                 </div>
                 <div class="row mb-3">
