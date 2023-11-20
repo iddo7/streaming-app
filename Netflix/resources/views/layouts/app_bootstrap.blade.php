@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -10,8 +11,8 @@
   <script src="main.js"></script>
 </head>
 <body>
-    <!-- HEADER -->
-  <header>
+  <!-- HEADER -->
+  <header class="d-flex justify-content-between align-items-center">
     <div class="netflixLogo">
       <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a>
     </div>      
@@ -21,13 +22,21 @@
       <a href="{{ route('movies.index') }}">Movies</a>
       <a href="{{ route('persons.index') }}">People</a>
       <a href="#">Recently Added</a>
-      <a target="_blank" href="https://codepen.io/cb2307/full/NzaOrm">Portfolio</a>        
     </nav>
-    <nav class="sub-nav">
+    <nav class="sub-nav d-flex align-items-center">
       <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
       <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-      <a href="#">Account</a>        
+      <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Account
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+          <li><a class="dropdown-item" href="#">View Account</a></li>
+          <li><a class="dropdown-item" href="{{ route('users.processLogout') }}">Logout</a></li>
+        </ul>
+      </div>
     </nav>      
+    </nav>
   </header>
   
   <div class="container mt-5">
@@ -49,13 +58,13 @@
   </div>
   <!-- END OF HEADER -->
 
-    @yield('content')
+  @yield('content')
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy 1997-2023 Netflix, Inc.</p>
-      <p>Isaac Negreiros & Julien Fortin &copy 2023</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy 1997-2023 Netflix, Inc.</p>
+    <p>Isaac Negreiros & Julien Fortin &copy 2023</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
