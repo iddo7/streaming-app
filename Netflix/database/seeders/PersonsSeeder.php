@@ -20,7 +20,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1978-03-21',
                 'placeOfBirth' => 'New York',
-                'pictureUrl' => 'img/people/man_0',
+                'pictureUrl' => 'img/people/man_0.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -29,7 +29,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1990-06-15',
                 'placeOfBirth' => 'Los Angeles',
-                'pictureUrl' => 'img/people/woman_19',
+                'pictureUrl' => 'img/people/woman_19.jpg',
                 'mainRole' => 'producer',
             ],
             [
@@ -38,7 +38,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1985-11-30',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'img/people/woman_79',
+                'pictureUrl' => 'img/people/woman_79.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -47,7 +47,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1992-08-10',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'img/people/man_1',
+                'pictureUrl' => 'img/people/man_1.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -56,7 +56,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1987-05-04',
                 'placeOfBirth' => 'San Francisco',
-                'pictureUrl' => 'img/people/woman_53',
+                'pictureUrl' => 'img/people/woman_53.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -65,7 +65,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1980-12-18',
                 'placeOfBirth' => 'Houston',
-                'pictureUrl' => 'img/people/man_4',
+                'pictureUrl' => 'img/people/man_4.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -74,7 +74,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1989-09-22',
                 'placeOfBirth' => 'Seattle',
-                'pictureUrl' => 'img/people/woman_56',
+                'pictureUrl' => 'img/people/woman_56.jpg',
                 'mainRole' => 'producer',
             ],
             [
@@ -83,7 +83,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1983-04-06',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'img/people/man_5',
+                'pictureUrl' => 'img/people/man_5.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -92,7 +92,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1995-02-14',
                 'placeOfBirth' => 'Boston',
-                'pictureUrl' => 'img/people/woman_60',
+                'pictureUrl' => 'img/people/woman_60.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -101,7 +101,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1982-07-29',
                 'placeOfBirth' => 'Philadelphia',
-                'pictureUrl' => 'img/people/man_6',
+                'pictureUrl' => 'img/people/man_6.jpg',
                 'mainRole' => 'actor',
             ],
         ]);
