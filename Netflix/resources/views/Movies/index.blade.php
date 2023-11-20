@@ -8,9 +8,11 @@
   
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
+    @role('admin')
     <div class='container-fluid '>
       <a class="btn btn-danger btn-lg " href="{{ route('movies.create') }}">Ajouter</a> 
     </div>
+    @endrole
     <div class="location" id="home">
         <h1 id="home">Tout les films</h1>
         <div class="box">
