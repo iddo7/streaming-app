@@ -42,10 +42,25 @@ class PersonsController extends Controller
     {
         try {
             $person = new Person($request->all());
+
+            $uploadedFile = $request->file('pictureUrl');
+            $uniqueFileName = str_replace(' ', '_', $person->name) . '-' . uniqid() . '.' . $uploadedFile->extension();
+            try {
+                $request->pictureUrl->move(public_path('img/people'), $uniqueFileName);
+            }
+            catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+            {
+                Log::error("Error while uploading the file. " [$e]);
+            }
+
+            $person->pictureUrl = $uniqueFileName;
             $person->save();
+
+            return redirect()->route('persons.index')->with('messages', "Actor added successfully!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
+            return redirect()->route('persons.index')->withErrors(["Error wile adding the person"]);
         }
         return redirect()->route('persons.index');
     }
