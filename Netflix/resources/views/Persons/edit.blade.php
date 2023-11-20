@@ -6,7 +6,7 @@
 <div class="container mt-6">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
-            <form method="post" action="{{ route('persons.update', [$person]) }}">
+            <form method="post" action="{{ route('persons.update', [$person]) }}", enctype="multipart/form-data">
             @csrf
             @method('patch')
                 <div class="mb-3">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="pictureUrl" class="form-label">Profile Picture Url</label>
-                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" value="{{ old('pictureUrl', $person->pictureUrl) }}">
+                    <input type="file" class="form-control" id="pictureUrl" name="pictureUrl" value="{{ old('pictureUrl', $person->pictureUrl) }}">
                 </div>
 
                 <div class="row mb-3">

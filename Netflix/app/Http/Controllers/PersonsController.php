@@ -7,6 +7,7 @@ use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\PersonRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class PersonsController extends Controller
 {
@@ -53,7 +54,7 @@ class PersonsController extends Controller
                 Log::error("Error while uploading the file. " [$e]);
             }
 
-            $person->pictureUrl = $uniqueFileName;
+            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->save();
 
             return redirect()->route('persons.index')->with('messages', "Actor added successfully!");
@@ -87,7 +88,29 @@ class PersonsController extends Controller
      */
     public function update(PersonRequest $request, Person $person)
     {
+        // Delete the image
         try {
+            if(\File::exists(public_path($person->pictureUrl)))
+            {
+                File::delete(public_path($person->pictureUrl));
+            }
+        }
+        catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+        {
+            Log::error("Error while deleting the file. " [$e]);
+        }
+
+        try {
+
+            try {
+                $request->pictureUrl->move(public_path('img/people'), $person->pictureUrl);
+            }
+            catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+            {
+                Log::error("Error while uploading the file. " [$e]);
+            }
+            
+            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->update($request->all());
             $person->save();
 
@@ -118,6 +141,17 @@ class PersonsController extends Controller
             if ($numberOfProducedMovies > 0) {
                 $errorMessage = "Cannot delete " . $person->name . " because they direct " . $numberOfProducedMovies . " movie(s)";
                 return redirect()->route('persons.show', [$person])->withErrors($errorMessage);
+            }
+            
+            try {
+                if(\File::exists(public_path($person->pictureUrl)))
+                {
+                    File::delete(public_path($person->pictureUrl));
+                }
+            }
+            catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+            {
+                Log::error("Error while deleting the file. " [$e]);
             }
 
             // If a person has a movie, detach it
