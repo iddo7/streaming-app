@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('movies', 
-[MoviesController::class, 'index'])->name('movies.index')->middleware('CheckRole:admin,usager,kid');
+[MoviesController::class, 'index'])->name('movies.index')->middleware('CheckRole:admin,normal,kid');
 
 Route::get('/movie-person/create', 
 [MoviesController::class, 'createMoviePerson'])->name('movie-person.create')->middleware('CheckRole:admin');
@@ -33,10 +33,10 @@ Route::get('/movies/create',
 [MoviesController::class, 'create'])->name('movies.create')->middleware('CheckRole:admin');
 
 Route::get('/movies/{movie}', 
-[MoviesController::class, 'show'])->name('movies.show')->middleware('CheckRole:admin,usager,kid');
+[MoviesController::class, 'show'])->name('movies.show')->middleware('CheckRole:admin,normal,kid');
 
 Route::get('persons', 
-[PersonsController::class, 'index'])->name('persons.index')->middleware('CheckRole:admin,usager,kid');
+[PersonsController::class, 'index'])->name('persons.index')->middleware('CheckRole:admin,normal,kid');
 
 Route::get('/persons/create',
 [PersonsController::class, 'create'])->name('persons.create')->middleware('CheckRole:admin');
@@ -44,7 +44,7 @@ Route::post('/persons',
 [PersonsController::class, 'store'])->name('persons.store')->middleware('CheckRole:admin');
 
 Route::get('/persons/{person}', 
-[PersonsController::class, 'show'])->name('persons.show')->middleware('CheckRole:admin,usager,kid');
+[PersonsController::class, 'show'])->name('persons.show')->middleware('CheckRole:admin,normal,kid');
 
 Route::delete('/persons/{id}', 
 [PersonsController::class, 'destroy'])->name('persons.destroy')->middleware('CheckRole:admin');
