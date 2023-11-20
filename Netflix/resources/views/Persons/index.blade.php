@@ -8,14 +8,16 @@
   <!-- MAIN CONTAINER -->
   <section class="main-container" >
     <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-2 d-grid gap-2">
-                <a href="{{ route('persons.create') }}" class="btn btn-danger btn-lg">Add</a>
+        @role('admin')
+            <div class="row">
+                <div class="col-2 d-grid gap-2">
+                    <a href="{{ route('persons.create') }}" class="btn btn-danger btn-lg">Add</a>
+                </div>
+                <div class="col-2 d-grid gap-2">
+                    <a href="{{ route('movie-person.create') }}" class="btn btn-outline-light btn-lg">Add Person to a Movie</a>
+                </div>
             </div>
-            <div class="col-2 d-grid gap-2">
-                <a href="{{ route('movie-person.create') }}" class="btn btn-outline-light btn-lg">Add Person to a Movie</a>
-            </div>
-        </div>
+        @endrole
     </div>
     <div class="location" id="home">
         <h1 id="home">All the people</h1>
