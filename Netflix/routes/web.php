@@ -66,6 +66,8 @@ Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store')->middleware('CheckRole:admin');
 
 
+Route::get('/users',
+[UsersController::class, 'index'])->name('users.index')->middleware('CheckRole:admin');
 Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');
 Route::post('/processLogin',
