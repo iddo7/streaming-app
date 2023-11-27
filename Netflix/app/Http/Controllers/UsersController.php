@@ -11,8 +11,9 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
+        $connectedUserId = Auth::id();
 
-        return View('Users.index', compact('users'));
+        return View('Users.index', compact('users', 'connectedUserId'));
     }
 
     public function loginPage() 

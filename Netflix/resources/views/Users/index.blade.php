@@ -4,8 +4,14 @@
 @section('content')
 
 <div class="container mt-6">
+    <div class="row">
+        <div class="col-12">
+        </div>
+    </div>
     <div class="row d-flex justify-content-center">
         <div class="col-10">
+            
+            <a class="btn btn-outline-light btn-lg mb-3">Add</a>
             
             @if (count($users))
             @foreach($users as $user)
@@ -20,8 +26,8 @@
                         <span>{{ $user->role }}</span>
                     </div>
                     <div class="col-3 d-flex justify-content-end">
-                        <button class="btn btn-outline-light">Edit</button>
-                        <button class="btn btn-danger ms-3">Delete</button>
+                        <a class="btn btn-outline-light">Edit</a>
+                        <a class="btn btn-danger ms-3 {{ ($user->id == $connectedUserId) ? 'disabled' : '' }}">Delete</a>
                     </div>
                 </div>
             @endforeach
