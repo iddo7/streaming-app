@@ -9,7 +9,7 @@
   <section class="main-container" >
     <div class="container-fluid">
         <div class="row hero-row">
-            <div class="col-12 hero" style="background-image: url('{{$person->pictureUrl}}');">
+            <div class="col-12 hero" style="background-image: url('{{asset("$person->pictureUrl")}}');">
             </div>
         </div>
         <div class="row">
@@ -44,7 +44,7 @@
         <?php $movies = $person->movies ?>
         @if (count($movies))
             @foreach($movies as $movie)
-                <a href=""><img src="{{asset("images/$movie->cover")}}" alt=""></a>
+                <a href=""><img src="{{asset("$movie->cover")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>

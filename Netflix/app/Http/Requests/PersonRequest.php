@@ -26,7 +26,7 @@ class PersonRequest extends FormRequest
             'name' => 'required|min:4|max:255',
             'gender' => ['required', Rule::in(['male', 'female', 'hog rider hog rider', 'buggy'])],
             'birthday' => 'required|date',
-            'pictureUrl' => 'required|url',
+            'pictureUrl' => 'required|image|mimes:png,jpeg,jpg,gif|max:4096',
             'placeOfBirth' => 'required|min:3|max:255',
             'mainRole' => ['required', Rule::in(['actor', 'producer', 'director'])],
         ];
@@ -45,8 +45,9 @@ class PersonRequest extends FormRequest
             'birthday.required' => 'The birthday field is required.',
             'birthday.date' => 'The birthday must be a valid date.',
             
-            'pictureUrl.required' => 'The picture URL field is required.',
-            'pictureUrl.url' => 'The picture URL must be a valid URL.',
+            'pictureUrl.required' => 'The picture field is required.',
+            'pictureUrl.mimes' => 'The file type for the picture was not recognized (png, jpg, gif).',
+            'pictureUrl.max' => 'The file size for the picture needs to be smaller than 4Mb.',
             
             'placeOfBirth.required' => 'The place of birth field is required.',
             'placeOfBirth.min' => 'The place of birth must be at least 3 characters.',

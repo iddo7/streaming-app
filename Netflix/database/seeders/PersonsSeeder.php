@@ -20,7 +20,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1978-03-21',
                 'placeOfBirth' => 'New York',
-                'pictureUrl' => 'http://images2.fanpop.com/images/photos/7900000/JOHN-DOE-john-doe-7969105-1735-2560.jpg',
+                'pictureUrl' => 'img/people/man_0.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -29,7 +29,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1990-06-15',
                 'placeOfBirth' => 'Los Angeles',
-                'pictureUrl' => 'https://img.networthpost.org/thumbs/2806278_jane-smith/2806278_jane-smith_1.jpeg',
+                'pictureUrl' => 'img/people/woman_19.jpg',
                 'mainRole' => 'producer',
             ],
             [
@@ -38,7 +38,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1985-11-30',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'https://tse1.mm.bing.net/th?id=OIP.keOwACWeX4EpBnw34d_3_QHaKi&pid=Api',
+                'pictureUrl' => 'img/people/woman_79.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -47,7 +47,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1992-08-10',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'https://cache.legacy.net/legacy/images/cobrands/grandrapids/photos/WM0203395-1_20231019.jpgx?w=600&h=499',
+                'pictureUrl' => 'img/people/man_1.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -56,7 +56,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1987-05-04',
                 'placeOfBirth' => 'San Francisco',
-                'pictureUrl' => 'https://i.ytimg.com/vi/R-kWnnZ1lOM/maxresdefault.jpg',
+                'pictureUrl' => 'img/people/woman_53.jpg',
                 'mainRole' => 'actor',
             ],
             [
@@ -65,7 +65,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1980-12-18',
                 'placeOfBirth' => 'Houston',
-                'pictureUrl' => 'https://assets.dmagstatic.com/wp-content/uploads/2018/02/Michael-Wilson-headshot.jpg',
+                'pictureUrl' => 'img/people/man_4.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -74,7 +74,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1989-09-22',
                 'placeOfBirth' => 'Seattle',
-                'pictureUrl' => 'https://netstorage-kami.akamaized.net/images/d3e3e703047d7d4d.jpg?imwidth=900',
+                'pictureUrl' => 'img/people/woman_56.jpg',
                 'mainRole' => 'producer',
             ],
             [
@@ -83,7 +83,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1983-04-06',
                 'placeOfBirth' => 'Chicago',
-                'pictureUrl' => 'https://www.win-magazine.com/wp-content/uploads/2014/04/david-taylor-mug-shot.jpg',
+                'pictureUrl' => 'img/people/man_5.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -92,7 +92,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'female',
                 'birthday' => '1995-02-14',
                 'placeOfBirth' => 'Boston',
-                'pictureUrl' => 'https://vanderbilthustler.com/wp-content/uploads/2019/10/emily-white.jpg',
+                'pictureUrl' => 'img/people/woman_60.jpg',
                 'mainRole' => 'director',
             ],
             [
@@ -101,7 +101,7 @@ class PersonsSeeder extends Seeder
                 'gender' => 'male',
                 'birthday' => '1982-07-29',
                 'placeOfBirth' => 'Philadelphia',
-                'pictureUrl' => 'https://www.albanyinstitute.org/tl_files/collection/paintings/1922.2_wollaston.jpg',
+                'pictureUrl' => 'img/people/man_6.jpg',
                 'mainRole' => 'actor',
             ],
         ]);
