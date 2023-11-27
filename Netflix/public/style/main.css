@@ -173,6 +173,10 @@ a {
   text-decoration: none;
 }
 
+.max-height-1 {
+  max-height: 200px;
+}
+
 
 /* FOOTER */
 footer {
