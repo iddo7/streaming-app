@@ -49,28 +49,32 @@ class MoviesController extends Controller
     public function store(MovieRequest $request)
     {
 
-    try {    
-        $movie = new Movie($request->all());
-        $movie->save();
+        try {    
+            $movie = new Movie($request->all());
 
-        $uploadedFile = $request->file('cover');
-        $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
+            $uploadedFile = $request->file('cover');
+            $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
 
-        try {
-            $request->cover->move(public_path('img/movies'), $nomFichierUnique);
+            try {
+                $request->cover->move(public_path('img/movies'), $nomFichierUnique);
+            }
+
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) 
+            {
+            Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+            }
+
+            $movie->cover = "img/movies/" . $nomFichierUnique;
+            $movie->save();
+
+            return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
         }
-        catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
-           Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+        catch (\Throwable $e) {
+            Log::debug($e);
+            return redirect()->route('movies.index')->withErrors(['l\'ajout n\'a pas fonctionné']);
         }
+        return redirect()->route('movies.index');
 
-        $movie->cover = $nomFichierUnique;
-        $movie->save();
-        return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
-    }
-    catch (\Throwable $e) {
-        Log::debug($e);
-    }
-        return redirect()->route('movies.index')->withErrors(['l\'ajout n\'a pas fonctionné']);
     }
     public function storeMoviePerson(MoviePersonRequest $request)
     {
