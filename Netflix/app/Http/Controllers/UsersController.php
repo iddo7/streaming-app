@@ -16,6 +16,11 @@ class UsersController extends Controller
         return View('Users.index', compact('users', 'connectedUserId'));
     }
 
+    public function create()
+    {
+        return View('Users.create');
+    }
+
     public function loginPage() 
     {
         return View('Users.login');

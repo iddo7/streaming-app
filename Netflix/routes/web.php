@@ -68,6 +68,8 @@ Route::post('/movies',
 
 Route::get('/users',
 [UsersController::class, 'index'])->name('users.index')->middleware('CheckRole:admin');
+Route::get('/users/create',
+[UsersController::class, 'create'])->name('users.create')->middleware('CheckRole:admin');
 Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');
 Route::post('/processLogin',
