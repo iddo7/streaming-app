@@ -66,6 +66,20 @@ Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store')->middleware('CheckRole:admin');
 
 
+Route::get('/users',
+[UsersController::class, 'index'])->name('users.index')->middleware('CheckRole:admin');
+Route::get('/users/create',
+[UsersController::class, 'create'])->name('users.create')->middleware('CheckRole:admin');
+Route::post('/users',
+[UsersController::class, 'store'])->name('users.store')->middleware('CheckRole:admin');
+Route::delete('/users/{id}',
+[UsersController::class, 'destroy'])->name('users.destroy')->middleware('CheckRole:admin');
+Route::get('/users/{user}/edit/', 
+[UsersController::class, 'edit'])->name('users.edit')->middleware('CheckRole:admin');
+Route::patch('/users/{user}/update',
+[UsersController::class, 'update'])->name('users.update')->middleware('CheckRole:admin');
+
+
 Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');
 Route::post('/processLogin',
