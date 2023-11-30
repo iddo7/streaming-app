@@ -72,6 +72,8 @@ Route::get('/users/create',
 [UsersController::class, 'create'])->name('users.create')->middleware('CheckRole:admin');
 Route::post('/users',
 [UsersController::class, 'store'])->name('users.store')->middleware('CheckRole:admin');
+Route::delete('/users/{id}',
+[UsersController::class, 'destroy'])->name('users.destroy')->middleware('CheckRole:admin');
 
 Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');

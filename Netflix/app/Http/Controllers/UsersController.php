@@ -39,6 +39,26 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function destroy($id)
+    {
+        $connectedUserId = Auth::id();
+        if ($id == $connectedUserId) return redirect()->route('users.index')->withErrors(['You cannot delete your own account']);
+        
+        try
+        {
+            $user = User::findOrFail($id);
+            $user->delete();
+
+            return redirect()->route('users.index')->with('message', "Deleting " . $user->firstName . " was successful");
+        }
+        catch (\Throwable $e)
+        {
+            Log::debug($e);
+            return redirect()->route('users.index')->withErrors(['Deleting was not successful']);
+        }
+        return redirect()->route('users.index');
+    }
+
     public function loginPage() 
     {
         return View('Users.login');

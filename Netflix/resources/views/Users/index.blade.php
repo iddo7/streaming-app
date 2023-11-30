@@ -27,7 +27,11 @@
                     </div>
                     <div class="col-3 d-flex justify-content-end">
                         <a class="btn btn-outline-light">Edit</a>
-                        <a class="btn btn-danger ms-3 {{ ($user->id == $connectedUserId) ? 'disabled' : '' }}">Delete</a>
+                        <form method="POST" action="{{ route('users.destroy', [$user->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger ms-3 {{ ($user->id == $connectedUserId) ? 'disabled' : '' }}">Delete</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
