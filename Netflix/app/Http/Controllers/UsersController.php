@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -19,6 +22,21 @@ class UsersController extends Controller
     public function create()
     {
         return View('Users.create');
+    }
+
+    public function store(UserRequest $request)
+    {
+        try
+        {
+            $user = new User($request->all());
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        catch (\Throwable $e)
+        {
+            Log::debug($e);
+        }
+        return redirect()->route('users.index');
     }
 
     public function loginPage() 

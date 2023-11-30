@@ -11,7 +11,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-10">
             
-            <a class="btn btn-outline-light btn-lg mb-3">Add</a>
+            <a href="{{ route('users.create') }}" class="btn btn-outline-light btn-lg mb-3">Add</a>
             
             @if (count($users))
             @foreach($users as $user)

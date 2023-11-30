@@ -6,7 +6,7 @@
 <div class="container mt-6">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
-            <form method="post" action="{{ route('persons.store') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
             @csrf
                 <div class="row mb-3">
                     <div class="col-6">
@@ -23,6 +23,10 @@
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                 </div>
                 <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" value="{{ old('email') }}">
+                </div>
+                <div class="mb-3">
                     <label for="role" class="form-label">Role</label>
                     <select class="form-select" name="role">
                         <option {{ (old('mainRole') == 'admin' || old('mainRole') == null) ? 'selected' : null }} value="admin">admin</option>
@@ -32,7 +36,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <a href="{{ route('persons.index') }}" class="col-6 d-grid gap-2">
+                    <a href="{{ route('users.index') }}" class="col-6 d-grid gap-2">
                         <button type="button" class="btn btn-outline-light btn-lg">Cancel</button>
                     </a>
                     <div class="col-6 d-grid gap-2">
