@@ -26,7 +26,7 @@
                         <span>{{ $user->role }}</span>
                     </div>
                     <div class="col-3 d-flex justify-content-end">
-                        <a class="btn btn-outline-light">Edit</a>
+                        <a href="{{ route('users.edit', [$user]) }}" class="btn btn-outline-light">Edit</a>
                         <form method="POST" action="{{ route('users.destroy', [$user->id]) }}">
                             @csrf
                             @method('DELETE')

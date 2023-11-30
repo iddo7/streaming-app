@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         return [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'email' => 'required|email|unique:users|max:255',
+            'email' => 'required|email|max:255',
             'password' => 'required|string|min:6',
             'role' => ['required', Rule::in(['admin', 'normal', 'kid'])],
         ];
@@ -47,7 +47,6 @@ class UserRequest extends FormRequest
             'lastName.string' => 'Last name must be a string.',
             'lastName.max' => 'Last name cannot be longer than 255 characters.',
             
-            'email.required' => 'Email is required.',
             'email.email' => 'Email must be a valid email address.',
             'email.unique' => 'Email is already taken.',
             'email.max' => 'Email cannot be longer than 255 characters.',

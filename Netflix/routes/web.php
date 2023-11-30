@@ -74,6 +74,11 @@ Route::post('/users',
 [UsersController::class, 'store'])->name('users.store')->middleware('CheckRole:admin');
 Route::delete('/users/{id}',
 [UsersController::class, 'destroy'])->name('users.destroy')->middleware('CheckRole:admin');
+Route::get('/users/{user}/edit/', 
+[UsersController::class, 'edit'])->name('users.edit')->middleware('CheckRole:admin');
+Route::patch('/users/{user}/update',
+[UsersController::class, 'update'])->name('users.update')->middleware('CheckRole:admin');
+
 
 Route::get('/login',
 [UsersController::class, 'loginPage'])->name('login');

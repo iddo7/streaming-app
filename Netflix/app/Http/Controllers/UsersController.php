@@ -39,6 +39,27 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function edit(User $user)
+    {
+        return View('users.edit', compact('user'));
+    }
+
+    public function update(UserRequest $request, User $user)
+    {
+        try
+        {
+            $user->update($request->all());
+            $user->save();
+            return redirect()->route('users.index')->with('message', "Editing " . $user->firstName . " was successfull");
+        }
+        catch (\Throwable $e)
+        {
+            Log::debug($e);
+            return redirect()-route('users.index')->withErrors(['Editing was not successfull']);
+        }
+        return redirect()->route('users.index');
+    }
+
     public function destroy($id)
     {
         $connectedUserId = Auth::id();
