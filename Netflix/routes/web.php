@@ -55,12 +55,12 @@ Route::patch('/persons/{person}/edit',
 [PersonsController::class, 'update'])->name('persons.update')->middleware('CheckRole:admin');
 
 Route::delete('/movies/{id}', 
-[MoviesController::class, 'destroy'])->name('movies.destroy');
+[MoviesController::class, 'destroy'])->name('movies.destroy')->middleware('CheckRole:admin');
 
 Route::get('/movies/{movie}/edit/', 
-[MoviesController::class, 'edit'])->name('movies.edit');
+[MoviesController::class, 'edit'])->name('movies.edit')->middleware('CheckRole:admin');
 Route::patch('/movies/{movie}/edit',
-[MoviesController::class, 'update'])->name('movies.update');
+[MoviesController::class, 'update'])->name('movies.update')->middleware('CheckRole:admin');
 
 Route::post('/movies',
 [MoviesController::class, 'store'])->name('movies.store')->middleware('CheckRole:admin');

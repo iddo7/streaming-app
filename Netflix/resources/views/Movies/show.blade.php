@@ -9,8 +9,9 @@
   <section class="main-container" >
     <div class="container-fluid">
         <div class="row hero-row">
-        <div class="col-12 hero" style="background-image: url('{{ asset("images/{$movie->cover}") }}');">
-            </div>
+        <div class="col-12 hero" style="background-image: url('{{ asset("{$movie->cover}") }}');">
+
+        </div>
         </div>
         <div class="row">
             <div class="col-12">

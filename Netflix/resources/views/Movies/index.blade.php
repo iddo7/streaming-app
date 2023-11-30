@@ -14,55 +14,55 @@
     </div>
     @endrole
     <div class="location" id="home">
-        <h1 id="home">Tout les films</h1>
+        <h1 id="home">Toutes les filmes</h1>
         <div class="box">
           @if (count($movies))
             @foreach($movies as $movie)
-            <a href="{{ route('movies.show', [$movie]) }}"><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+            <a href="{{ route('movies.show', [$movie]) }}"><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
           @endif               
         </div>
 
-        <h1 id="home">Vieux films</h1>
+        <h1 id="home">VIEUX FILMS</h1>
         <div class="box">
           @if (count($movieBefore2010))
             @foreach($movieBefore2010 as $movie)
-                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+                      <a href=""><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
           @endif               
         </div>
 
-        <h1 id="home">Films récent</h1>
+        <h1 id="home">Films mineurs</h1>
         <div class="box">
           @if (count($movieRecent))
             @foreach($movieRecent as $movie)
-                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+                      <a href=""><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
           @endif               
         </div>
 
-        <h1 id="home">Films bien cotés</h1>
+        <h1 id="home">Films trop g</h1>
         <div class="box">
           @if (count($movieGoodRating))
             @foreach($movieGoodRating as $movie)
-                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+                      <a href=""><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
           @endif               
         </div>
 
-        <h1 id="home">Films moins bien cotés</h1>
+        <h1 id="home">Films pas bon </h1>
         <div class="box">
           @if (count($movieLowerRating))
             @foreach($movieLowerRating as $movie)
-                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+                      <a href=""><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>
@@ -73,7 +73,7 @@
         <div class="box">
           @if (count($movieLongDuration))
             @foreach($movieLongDuration as $movie)
-                      <a href=""><img src='{{asset("images/$movie->cover")}}' alt=""></a>
+                      <a href=""><img src='{{asset("$movie->cover")}}' alt=""></a>
             @endforeach
           @else
                 <p>We couldn't find any movies.</p>

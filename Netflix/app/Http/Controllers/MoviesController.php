@@ -7,6 +7,7 @@ use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class MoviesController extends Controller
 {
@@ -48,14 +49,33 @@ class MoviesController extends Controller
      */
     public function store(MovieRequest $request)
     {
-        try {
+
+        try {    
             $movie = new Movie($request->all());
+
+            $uploadedFile = $request->file('cover');
+            $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
+
+            try {
+                $request->cover->move(public_path('img/movies'), $nomFichierUnique);
+            }
+
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) 
+            {
+            Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+            }
+
+            $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
+
+            return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
+            return redirect()->route('movies.index')->withErrors(['l\'ajout n\'a pas fonctionné']);
         }
         return redirect()->route('movies.index');
+
     }
     public function storeMoviePerson(MoviePersonRequest $request)
     {
@@ -63,6 +83,8 @@ class MoviesController extends Controller
         {
             $movie = Movie::find($request->movie_id);
             $person = Person::find($request->person_id);
+
+
 
             // Verifying if the relation already exists
             if ($movie->persons->contains($person))
@@ -108,7 +130,29 @@ class MoviesController extends Controller
      */
     public function update(MovieRequest $request, Movie $movie)
     {
+        // Delete the image
         try {
+            if(\File::exists(public_path($movie->cover)))
+            {
+                File::delete(public_path($movie->cover));
+            }
+        }
+        catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+        {
+            Log::error("Error while deleting the file. " [$e]);
+        }
+
+        try {
+
+            try {
+                $request->cover->move(public_path('img/movies'), $movie->cover);
+            }
+            catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+            {
+                Log::error("Error while uploading the file. " [$e]);
+            }
+            
+            $movie->cover = "img/movies/" . $uniqueFileName;
             $movie->update($request->all());
             $movie->save();
 
@@ -128,7 +172,17 @@ class MoviesController extends Controller
     {
         try {
             $movie = Movie::findOrFail($id);
-
+            
+            try {
+                if(\File::exists(public_path($movie->cover)))
+                {
+                    File::delete(public_path($movie->cover));
+                }
+            }
+            catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
+            {
+                Log::error("Error while deleting the file. " [$e]);
+            }
 
             // If a person has a movie, detach it
             $movie->persons()->detach();
@@ -139,5 +193,6 @@ class MoviesController extends Controller
             Log::debug($e);
             return redirect()->route('movies.index')->withErrors("Deleting " . $movie->title . " was not successful!");
         }
-        return redirect()->route('movies.index');    }
+        return redirect()->route('movies.index');
+    }
 }
