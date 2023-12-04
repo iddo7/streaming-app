@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
+use App\Http\Requests\MoviePersonRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 
@@ -192,6 +193,20 @@ class MoviesController extends Controller
         catch (\Throwable $e) {
             Log::debug($e);
             return redirect()->route('movies.index')->withErrors("Deleting " . $movie->title . " was not successful!");
+        }
+        return redirect()->route('movies.index');
+    }
+
+    public function detach(Movie $movie, Person $person)
+    {
+        try
+        {
+            $movie->persons()->detach($person);
+        }
+        catch (Exception $e)
+        {
+            return redirect()->route('movies.index')->withErrors("Detaching " . $movie->title . " and " . $person->name . " was not successful");
+            Log::debug($e);
         }
         return redirect()->route('movies.index');
     }

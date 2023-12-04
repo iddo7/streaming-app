@@ -15,16 +15,20 @@
         <div class="row">
             <div class="col">
                 <h1 class="p-0">{{$person->name}}</h1>
-                @role('admin')
-                  <a href="{{ route('persons.edit', [$person]) }}" class="btn btn-outline-light btn-lg">Edit</a>
-                  <form method="post" action="{{ route('persons.destroy', [$person->id]) }}">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
-                  </form>
-                @endrole
             </div>
         </div>
+        
+        @role('admin')
+          <div class="d-flex flex-row mb-3">
+              <a href="{{ route('persons.edit', [$person]) }}" class="me-2 btn btn-outline-light btn-lg">Edit</a>
+              <form method="post" action="{{ route('persons.destroy', [$person->id]) }}">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
+              </form>
+          </div>  
+        @endrole
+
         <div class="row">
             <div class="col-3">
                 <ul class="list-group">
@@ -44,7 +48,7 @@
         <?php $movies = $person->movies ?>
         @if (count($movies))
             @foreach($movies as $movie)
-                <a href=""><img src="{{asset("$movie->cover")}}" alt=""></a>
+                <a href="{{ route('movies.show', [$movie]) }}"><img src="{{asset("$movie->cover")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
