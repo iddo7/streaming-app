@@ -17,11 +17,11 @@
       <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a>
     </div>      
     <nav class="main-nav">                
-      <a href="#home">Home</a>
-      <a href="#tvShows">TV Shows</a>
       <a href="{{ route('movies.index') }}">Movies</a>
       <a href="{{ route('persons.index') }}">People</a>
-      <a href="#">Recently Added</a>
+      @role('admin')
+        <a href="{{ route('users.index') }}">Users</a>
+      @endrole
     </nav>
     <nav class="sub-nav d-flex align-items-center">
       <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>

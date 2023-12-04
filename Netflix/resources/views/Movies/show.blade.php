@@ -10,21 +10,23 @@
     <div class="container-fluid">
         <div class="row hero-row">
         <div class="col-12 hero" style="background-image: url('{{ asset("{$movie->cover}") }}');">
+        </div>
+        </div>
 
-        </div>
-        </div>
         <div class="row">
             <div class="col-12">
                 <h1 class="p-0">{{$movie->title}}</h1>
             </div>
         </div>
         @role('admin')
-            <a href="{{ route('movies.edit', [$movie]) }}" class="btn btn-outline-light btn-lg">Edit</a>
-            <form method="post" action="{{ route('movies.destroy', [$movie->id]) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
-            </form>
+            <div class="d-flex flex-row mb-3">
+                <a href="{{ route('movies.edit', [$movie]) }}" class="me-2 btn btn-outline-light btn-lg">Edit</a>
+                <form method="post" action="{{ route('movies.destroy', [$movie->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger btn-lg">Delete</button>
+                </form>
+            </div>            
         @endrole
         <div class="row">
             <div class="col-3">
@@ -38,19 +40,30 @@
         </div>
     </div>
 
+    <?php 
+        $director = $movie->director;
+        $producer = $movie->producer;
+        $persons = $movie->persons;
+    ?>
+    <h1 id="tvShows">Director</h1>
+    <div class="box">
+        @if ($director != null)
+            <a href="{{ route('persons.show', [$director]) }}"><img src="{{asset("$director->pictureUrl")}}" alt=""></a>
+        @endif
+    </div>
+
     <h1 id="tvShows">Producer</h1>
     <div class="box">
-        <?php $person = $movie->producer ?>
-        <!-- NEEDS CHECK IF PRODUCER IS NULL -->
-        <a href="{{ route('persons.show', [$person]) }}"><img src="{{$person->pictureUrl}}" alt=""></a>
+        @if ($producer != null)
+            <a href="{{ route('persons.show', [$producer]) }}"><img src="{{asset("$producer->pictureUrl")}}" alt=""></a>
+        @endif
     </div>
 
     <h1 id="tvShows">Actors that participated in this movie</h1>
     <div class="box">
-        <?php $persons = $movie->persons ?>
         @if (count($persons))
             @foreach($persons as $person)
-                <a href="{{ route('persons.show', [$person]) }}"><img src="{{$person->pictureUrl}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any actors.</p>
