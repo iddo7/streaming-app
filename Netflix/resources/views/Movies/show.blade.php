@@ -60,10 +60,18 @@
     </div>
 
     <h1 id="tvShows">Actors that participated in this movie</h1>
-    <div class="box">
+    <div class="d-flex flex-row">
         @if (count($persons))
             @foreach($persons as $person)
-                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+            <div class="me-3">
+            <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                @role('admin')
+                    <div class="row mt-2 p-2">
+                        <button type="submit" class="btn btn-outline-danger btn-lg">Detach</button> 
+                    </div>
+                @endrole
+            </div>
+                
             @endforeach
         @else
             <p>We couldn't find any actors.</p>

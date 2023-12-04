@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
+use App\Http\Requests\MoviePersonRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 
