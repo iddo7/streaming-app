@@ -68,7 +68,7 @@ class MoviesController extends Controller
             $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
 
-            return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
+            return redirect()->route('movies.index')->with('message', "Ajout du film " . $acteur->title . " réussi!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
@@ -187,7 +187,7 @@ class MoviesController extends Controller
             // If a person has a movie, detach it
             $movie->persons()->detach();
             $movie->delete();
-            return redirect()->route('movies.index')->with('messages', "Deleting " . $movie->title . " was successful!");
+            return redirect()->route('movies.index')->with('message', "Deleting " . $movie->title . " was successful!");
         }
         catch (\Throwable $e) {
             Log::debug($e);

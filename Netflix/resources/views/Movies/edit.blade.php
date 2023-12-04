@@ -1,5 +1,24 @@
 @extends('layouts.app_bootstrap')
 
+@if(isset($errors) && $errors->any())
+
+<div class="toast">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+
+@endif
+@if(isset($message) && $message->any())
+
+<div class="toast">
+        @foreach($message->all() as $message)
+            <p>{{ $message }}</p>
+        @endforeach
+    </div>
+
+@endif
+
 @section('title', 'Movies page')
 @section('content')
 

@@ -1,5 +1,7 @@
 @extends('layouts.app_bootstrap')
 
+
+
 @section('title', 'Show movie')
 @section('content')
 

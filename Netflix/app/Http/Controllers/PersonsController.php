@@ -57,7 +57,7 @@ class PersonsController extends Controller
             $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->save();
 
-            return redirect()->route('persons.index')->with('messages', "Actor added successfully!");
+            return redirect()->route('persons.index')->with('message', "Actor added successfully!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
@@ -157,7 +157,7 @@ class PersonsController extends Controller
             // If a person has a movie, detach it
             $person->movies()->detach();
             $person->delete();
-            return redirect()->route('persons.index')->with('messages', "Deleting " . $person->name . " was successful!");
+            return redirect()->route('persons.index')->with('message', "Deleting " . $person->name . " was successful!");
         }
         catch (\Throwable $e) {
             Log::debug($e);

@@ -1,5 +1,6 @@
 @extends('layouts.app_bootstrap')
 
+
 @section('title', 'Movies page')
 
 

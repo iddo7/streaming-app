@@ -1,5 +1,8 @@
 @extends('layouts.app_bootstrap')
 
+
+
+
 @section('title', 'Movies page')
 @section('content')
 
@@ -68,13 +71,6 @@
                 </div>
                 <button type="submit" class="btn btn-danger">Submit</button>
             </form>
-            @if(isset($errors) && $errors->any())
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
-                </div>
-            @endif
         </div>
     </div>
 </div>
