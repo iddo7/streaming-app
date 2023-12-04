@@ -57,6 +57,9 @@ Route::patch('/persons/{person}/edit',
 Route::delete('/movies/{id}', 
 [MoviesController::class, 'destroy'])->name('movies.destroy')->middleware('CheckRole:admin');
 
+Route::get('/movies/{movie}/{person}', 
+[MoviesController::class, 'detach'])->name('movies.detach')->middleware('CheckRole:admin');
+
 Route::get('/movies/{movie}/edit/', 
 [MoviesController::class, 'edit'])->name('movies.edit')->middleware('CheckRole:admin');
 Route::patch('/movies/{movie}/edit',

@@ -63,15 +63,14 @@
     <div class="d-flex flex-row">
         @if (count($persons))
             @foreach($persons as $person)
-            <div class="me-3">
-            <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
-                @role('admin')
-                    <div class="row mt-2 p-2">
-                        <button type="submit" class="btn btn-outline-danger btn-lg">Detach</button> 
-                    </div>
-                @endrole
-            </div>
-                
+                <div class="me-3">
+                    <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                    @role('admin')
+                        <div class="row mt-2 p-2">
+                            <a href="{{ route('movies.detach', [$movie, $person]) }}" type="submit" class="btn btn-outline-danger btn-lg">Detach</a> 
+                        </div>
+                    @endrole
+                </div> 
             @endforeach
         @else
             <p>We couldn't find any actors.</p>

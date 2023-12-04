@@ -196,4 +196,18 @@ class MoviesController extends Controller
         }
         return redirect()->route('movies.index');
     }
+
+    public function detach(Movie $movie, Person $person)
+    {
+        try
+        {
+            $movie->persons()->detach($person);
+        }
+        catch (Exception $e)
+        {
+            return redirect()->route('movies.index')->withErrors("Detaching " . $movie->title . " and " . $person->name . " was not successful");
+            Log::debug($e);
+        }
+        return redirect()->route('movies.index');
+    }
 }
