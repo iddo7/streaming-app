@@ -88,6 +88,9 @@ class PersonsController extends Controller
      */
     public function update(PersonRequest $request, Person $person)
     {
+        $uploadedFile = $request->file('pictureUrl');
+        $uniqueFileName = str_replace(' ', '_', $person->name) . '-' . uniqid() . '.' . $uploadedFile->extension();
+
         // Delete the image
         try {
             if(\File::exists(public_path($person->pictureUrl)))
@@ -101,17 +104,17 @@ class PersonsController extends Controller
         }
 
         try {
-
             try {
-                $request->pictureUrl->move(public_path('img/people'), $person->pictureUrl);
+                $request->pictureUrl->move(public_path('img/people'), $uniqueFileName);
             }
             catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
             {
                 Log::error("Error while uploading the file. " [$e]);
             }
+
             
-            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->update($request->all());
+            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->save();
 
             return redirect()->route('persons.index')->with('message', "Editing " . $person->name . " was successful!");
