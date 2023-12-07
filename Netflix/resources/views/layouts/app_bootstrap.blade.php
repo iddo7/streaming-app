@@ -5,12 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href='{{ asset("style/main.css") }}'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('style/main.css') }}">
   <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
-  <script src="main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
+  
   <!-- HEADER -->
   <header class="d-flex justify-content-between align-items-center">
     <div class="netflixLogo">
@@ -35,27 +39,45 @@
           <li><a class="dropdown-item" href="{{ route('users.processLogout') }}">Logout</a></li>
         </ul>
       </div>
-    </nav>      
     </nav>
   </header>
-  
-  <div class="container mt-5">
-    @if(isset($errors) && $errors->any())
-        <div class="alert alert-danger mt-5">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-    @endif
-    
-    @if(isset($messages) && $messages->any())
-        <div class="alert alert-danger mt-5">
-            @foreach($messages->all() as $message)
-                <p>{{ $message }}</p>
-            @endforeach
-        </div>
-    @endif
+
+  <!-- Your existing content -->
+ 
+<div class="container mt-5">
+  @if(isset($errors) && $errors->any())
+  <div  class="toast toast-error bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
+    <div class="toast-header bg-danger text-black">
+      <strong class="mr-auto text-white">Error</strong>
+      <button id="hideButtonError" type="button" class="btn-close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body text-white">
+      @foreach($errors->all() as $error)
+      <p>{{ $error }}</p>
+      @endforeach
+    </div>
   </div>
+  @endif
+
+  @if(session('message'))
+  <div class="toast toast-message bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
+    <div class="toast-header bg-success text-black">
+      <strong class="mr-auto text-white">Message</strong>
+      <button id="hideButtonMessage" type="button" class="btn-close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body text-white">
+      <p>{{ session('message') }}</p>
+    </div>
+  </div>
+  @endif
+</div>
+
+
+
   <!-- END OF HEADER -->
 
   @yield('content')
@@ -65,6 +87,37 @@
     <p>&copy 1997-2023 Netflix, Inc.</p>
     <p>Isaac Negreiros & Julien Fortin &copy 2023</p>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS and Your Other Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+ document.getElementById("hideButtonError") 
+        .onclick = function () { 
+            var toastElList = [].slice.call( 
+                document.querySelectorAll('.toast')) 
+            var toastList = toastElList.map(function (toastEl) { 
+                return new bootstrap.Toast(toastEl) 
+            }) 
+            toastList.forEach(toast => toast.hide())
+    }
+    document.getElementById("hideButtonMessage") 
+        .onclick = function () { 
+            var toastElList = [].slice.call( 
+                document.querySelectorAll('.toast')) 
+            var toastList = toastElList.map(function (toastEl) { 
+                return new bootstrap.Toast(toastEl) 
+            }) 
+            toastList.forEach(toast => toast.hide())
+    }
+  </script>
+
+  <!-- Initialize Toasts -->
+  <script>
+    $(document).ready(function(){
+      $('.toast').toast('show');
+    });
+  </script>
 </body>
 </html>

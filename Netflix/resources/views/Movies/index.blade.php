@@ -1,5 +1,6 @@
 @extends('layouts.app_bootstrap')
 
+
 @section('title', 'Movies page')
 
 
@@ -25,7 +26,7 @@
           @endif               
         </div>
 
-        <h1 id="home">VIEUX FILMS</h1>
+        <h1 id="home">Films avant 2010</h1>
         <div class="box">
           @if (count($movieBefore2010))
             @foreach($movieBefore2010 as $movie)
@@ -36,7 +37,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films mineurs</h1>
+        <h1 id="home">Films récent</h1>
         <div class="box">
           @if (count($movieRecent))
             @foreach($movieRecent as $movie)
@@ -47,7 +48,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films trop g</h1>
+        <h1 id="home">Films bien coté</h1>
         <div class="box">
           @if (count($movieGoodRating))
             @foreach($movieGoodRating as $movie)
@@ -58,7 +59,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films pas bon </h1>
+        <h1 id="home">Films moins bien coté </h1>
         <div class="box">
           @if (count($movieLowerRating))
             @foreach($movieLowerRating as $movie)

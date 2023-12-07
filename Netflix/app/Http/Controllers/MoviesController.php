@@ -69,7 +69,7 @@ class MoviesController extends Controller
             $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
 
-            return redirect()->route('acteurs.index')->with('message', "Ajout de l'acteur " . $acteur->nom . " réussi!");
+            return redirect()->route('movies.index')->with('message', "Ajout du film " . $movie->title . " réussi!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
@@ -131,6 +131,9 @@ class MoviesController extends Controller
      */
     public function update(MovieRequest $request, Movie $movie)
     {
+        $uploadedFile = $request->file('cover');
+        $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
+
         // Delete the image
         try {
             if(\File::exists(public_path($movie->cover)))
@@ -146,15 +149,15 @@ class MoviesController extends Controller
         try {
 
             try {
-                $request->cover->move(public_path('img/movies'), $movie->cover);
+                $request->cover->move(public_path('img/movies'), $nomFichierUnique);
             }
             catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
             {
                 Log::error("Error while uploading the file. " [$e]);
             }
             
-            $movie->cover = "img/movies/" . $uniqueFileName;
             $movie->update($request->all());
+            $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
 
             return redirect()->route('movies.index')->with('message', "Editing " . $movie->title . " was successful!");
@@ -188,7 +191,7 @@ class MoviesController extends Controller
             // If a person has a movie, detach it
             $movie->persons()->detach();
             $movie->delete();
-            return redirect()->route('movies.index')->with('messages', "Deleting " . $movie->title . " was successful!");
+            return redirect()->route('movies.index')->with('message', "Deleting " . $movie->title . " was successful!");
         }
         catch (\Throwable $e) {
             Log::debug($e);

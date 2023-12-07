@@ -57,7 +57,7 @@ class PersonsController extends Controller
             $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->save();
 
-            return redirect()->route('persons.index')->with('messages', "Actor added successfully!");
+            return redirect()->route('persons.index')->with('message', "Actor added successfully!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
@@ -88,6 +88,9 @@ class PersonsController extends Controller
      */
     public function update(PersonRequest $request, Person $person)
     {
+        $uploadedFile = $request->file('pictureUrl');
+        $uniqueFileName = str_replace(' ', '_', $person->name) . '-' . uniqid() . '.' . $uploadedFile->extension();
+
         // Delete the image
         try {
             if(\File::exists(public_path($person->pictureUrl)))
@@ -101,17 +104,17 @@ class PersonsController extends Controller
         }
 
         try {
-
             try {
-                $request->pictureUrl->move(public_path('img/people'), $person->pictureUrl);
+                $request->pictureUrl->move(public_path('img/people'), $uniqueFileName);
             }
             catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
             {
                 Log::error("Error while uploading the file. " [$e]);
             }
+
             
-            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->update($request->all());
+            $person->pictureUrl = "img/people/" . $uniqueFileName;
             $person->save();
 
             return redirect()->route('persons.index')->with('message', "Editing " . $person->name . " was successful!");
@@ -157,7 +160,7 @@ class PersonsController extends Controller
             // If a person has a movie, detach it
             $person->movies()->detach();
             $person->delete();
-            return redirect()->route('persons.index')->with('messages', "Deleting " . $person->name . " was successful!");
+            return redirect()->route('persons.index')->with('message', "Deleting " . $person->name . " was successful!");
         }
         catch (\Throwable $e) {
             Log::debug($e);
