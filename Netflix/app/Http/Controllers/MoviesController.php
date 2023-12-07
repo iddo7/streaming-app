@@ -123,7 +123,7 @@ class MoviesController extends Controller
     {
         $persons = Person::OrderBy('name')->get();
 
-        return View('movies.edit', compact('movie'), compact('persons'));
+        return View('Movies.edit', compact('movie'), compact('persons'));
     }
 
     /**
