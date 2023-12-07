@@ -130,6 +130,9 @@ class MoviesController extends Controller
      */
     public function update(MovieRequest $request, Movie $movie)
     {
+        $uploadedFile = $request->file('cover');
+        $nomFichierUnique = str_replace(' ', '_', $movie->title) . '-' . uniqid() . '.' . $uploadedFile->extension(); 
+
         // Delete the image
         try {
             if(\File::exists(public_path($movie->cover)))
@@ -145,15 +148,15 @@ class MoviesController extends Controller
         try {
 
             try {
-                $request->cover->move(public_path('img/movies'), $movie->cover);
+                $request->cover->move(public_path('img/movies'), $nomFichierUnique);
             }
             catch (\Symfony\Component\HttpFoundation\File\Exception\FileException $e)
             {
                 Log::error("Error while uploading the file. " [$e]);
             }
             
-            $movie->cover = "img/movies/" . $uniqueFileName;
             $movie->update($request->all());
+            $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
 
             return redirect()->route('movies.index')->with('message', "Editing " . $movie->title . " was successful!");
