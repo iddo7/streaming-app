@@ -68,7 +68,7 @@ class MoviesController extends Controller
             $movie->cover = "img/movies/" . $nomFichierUnique;
             $movie->save();
 
-            return redirect()->route('movies.index')->with('message', "Ajout du film " . $acteur->title . " réussi!");
+            return redirect()->route('movies.index')->with('message', "Ajout du film " . $movie->title . " réussi!");
         }
         catch (\Throwable $e) {
             Log::debug($e);

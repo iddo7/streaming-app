@@ -10,8 +10,11 @@
   <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
+  
   <!-- HEADER -->
   <header class="d-flex justify-content-between align-items-center">
     <div class="netflixLogo">
@@ -40,39 +43,40 @@
   </header>
 
   <!-- Your existing content -->
-
-  <div class="container mt-5">
-    @if(isset($errors) && $errors->any())
-      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
-        <div class="toast-header">
-          <strong class="mr-auto">Error </strong>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          @foreach($errors->all() as $error)
-            <p>{{ $error }}</p>
-          @endforeach
-        </div>
-      </div>
+ 
+<div class="container mt-5">
+  @if(isset($errors) && $errors->any())
+  <div  class="toast toast-error bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
+    <div class="toast-header bg-danger text-black">
+      <strong class="mr-auto text-white">Error</strong>
+      <button id="hideButtonError" type="button" class="btn-close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-    @endif
-
-    @if(session('message'))
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
-        <div class="toast-header">
-            <strong class="mr-auto">Message</strong>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            <p>{{ session('message') }}</p>
-        </div>
+    <div class="toast-body text-white">
+      @foreach($errors->all() as $error)
+      <p>{{ $error }}</p>
+      @endforeach
     </div>
-    @endif
+  </div>
+  @endif
+
+  @if(session('message'))
+  <div class="toast toast-message bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; right: 2%; bottom: 2%; z-index: 1030;">
+    <div class="toast-header bg-success text-black">
+      <strong class="mr-auto text-white">Message</strong>
+      <button id="hideButtonMessage" type="button" class="btn-close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body text-white">
+      <p>{{ session('message') }}</p>
+    </div>
+  </div>
+  @endif
 </div>
+
+
 
   <!-- END OF HEADER -->
 
@@ -88,6 +92,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="main.js"></script>
+  <script>
+ document.getElementById("hideButtonError") 
+        .onclick = function () { 
+            var toastElList = [].slice.call( 
+                document.querySelectorAll('.toast')) 
+            var toastList = toastElList.map(function (toastEl) { 
+                return new bootstrap.Toast(toastEl) 
+            }) 
+            toastList.forEach(toast => toast.hide())
+    }
+    document.getElementById("hideButtonMessage") 
+        .onclick = function () { 
+            var toastElList = [].slice.call( 
+                document.querySelectorAll('.toast')) 
+            var toastList = toastElList.map(function (toastEl) { 
+                return new bootstrap.Toast(toastEl) 
+            }) 
+            toastList.forEach(toast => toast.hide())
+    }
+  </script>
 
   <!-- Initialize Toasts -->
   <script>
