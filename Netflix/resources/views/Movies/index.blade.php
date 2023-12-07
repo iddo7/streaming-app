@@ -15,7 +15,7 @@
     </div>
     @endrole
     <div class="location" id="home">
-        <h1 id="home">Toutes les filmes</h1>
+        <h1 id="home">Tous les films</h1>
         <div class="box">
           @if (count($movies))
             @foreach($movies as $movie)
@@ -37,7 +37,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films récent</h1>
+        <h1 id="home">Films récents</h1>
         <div class="box">
           @if (count($movieRecent))
             @foreach($movieRecent as $movie)
@@ -48,7 +48,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films bien coté</h1>
+        <h1 id="home">Films bien cotés</h1>
         <div class="box">
           @if (count($movieGoodRating))
             @foreach($movieGoodRating as $movie)
@@ -59,7 +59,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films moins bien coté </h1>
+        <h1 id="home">Films moins bien cotés</h1>
         <div class="box">
           @if (count($movieLowerRating))
             @foreach($movieLowerRating as $movie)
@@ -70,7 +70,7 @@
           @endif               
         </div>
 
-        <h1 id="home">Films plus long</h1>
+        <h1 id="home">Films plus longs</h1>
         <div class="box">
           @if (count($movieLongDuration))
             @foreach($movieLongDuration as $movie)
