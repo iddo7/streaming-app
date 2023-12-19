@@ -36,7 +36,7 @@
     <div class="box">  
         @if (count($mainlyActors))
             @foreach($mainlyActors as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
@@ -47,7 +47,7 @@
     <div class="box">  
         @if (count($mainlyProducers))
             @foreach($mainlyProducers as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
@@ -58,7 +58,7 @@
     <div class="box">
         @if (count($males))
             @foreach($males as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
@@ -69,7 +69,7 @@
     <div class="box">  
         @if (count($females))
             @foreach($females as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
@@ -80,7 +80,7 @@
     <div class="box">  
         @if (count($peopleBornInChicago))
             @foreach($peopleBornInChicago as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
@@ -91,7 +91,7 @@
     <div class="box">  
         @if (count($peopleBornBefore1990))
             @foreach($peopleBornBefore1990 as $person)
-                <a href=""><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
+                <a href="{{ route('persons.show', [$person]) }}"><img src="{{asset("$person->pictureUrl")}}" alt=""></a>
             @endforeach
         @else
             <p>We couldn't find any persons.</p>
